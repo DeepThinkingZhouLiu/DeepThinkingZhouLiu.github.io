@@ -4,6 +4,7 @@ import {
   experience,
   focusAreas,
   profile,
+  preprints,
   projects,
   selectedPapers,
 } from './content/profile'
@@ -24,7 +25,7 @@ function App() {
       <div className="ambient-orbit ambient-orbit-one" aria-hidden="true" />
       <div className="ambient-orbit ambient-orbit-two" aria-hidden="true" />
 
-      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-10 px-5 py-5 sm:px-8 lg:px-10">
+      <div className="relative mx-auto flex w-full max-w-[1320px] flex-col gap-7 px-5 py-5 sm:px-7 lg:px-9">
         <header className="hero-card">
           <nav aria-label="Primary" className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
             <a href="#top" className="group flex w-fit items-center gap-4">
@@ -50,8 +51,8 @@ function App() {
             </div>
           </nav>
 
-          <section id="top" className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.72fr)] lg:items-end">
-            <div className="relative grid gap-8">
+          <section id="top" className="mt-9 grid gap-7 lg:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.68fr)] lg:items-end">
+            <div className="relative grid gap-6">
               <div className="hero-watermark" aria-hidden="true">
                 刘洲
               </div>
@@ -60,14 +61,14 @@ function App() {
                 <p className="w-fit rounded-full border border-ink/10 bg-white/75 px-4 py-2 text-xs font-bold uppercase text-muted shadow-sm">
                   {profile.kicker}
                 </p>
-                <h1 className="max-w-5xl text-balance font-display text-[clamp(4.6rem,13vw,13rem)] leading-[0.78] text-ink">
+                <h1 className="max-w-5xl text-balance font-display text-[clamp(3.8rem,10vw,9rem)] leading-[0.82] text-ink">
                   Zhou
                   <span className="block italic text-accent">Liu</span>
                 </h1>
-                <p className="max-w-4xl text-balance font-display text-[clamp(2rem,5vw,5.6rem)] leading-[0.9] text-ink">
+                <p className="max-w-4xl text-balance font-display text-[clamp(1.55rem,3.6vw,3.8rem)] leading-[0.95] text-ink">
                   Research agents with taste, rigor, and measurable bite.
                 </p>
-                <p className="max-w-2xl text-pretty text-lg leading-8 text-muted sm:text-xl">
+                <p className="max-w-2xl text-pretty text-base leading-7 text-muted sm:text-lg">
                   {profile.summary}
                 </p>
               </div>
@@ -95,7 +96,7 @@ function App() {
                 <div className="flex items-start justify-between gap-5">
                   <div>
                     <p className="text-xs font-bold uppercase text-muted">Current axis</p>
-                    <h2 className="mt-3 text-balance font-display text-4xl leading-[0.95] text-ink">
+                    <h2 className="mt-3 text-balance font-display text-3xl leading-[0.98] text-ink">
                       Publishable systems. Shippable interfaces.
                     </h2>
                   </div>
@@ -131,15 +132,15 @@ function App() {
           </section>
         </header>
 
-        <main className="grid gap-10">
+        <main className="grid gap-7">
           <section aria-label="Research highlights" className="grid gap-3 md:grid-cols-3">
             {currentHighlights.map((highlight, index) => (
               <article key={highlight.label} className="metric-card">
                 <p className="font-mono text-xs text-muted tabular-nums">0{index + 1}</p>
-                <p className="mt-8 font-display text-6xl leading-none text-ink tabular-nums">
+                <p className="mt-6 font-display text-5xl leading-none text-ink tabular-nums">
                   {highlight.value}
                 </p>
-                <p className="mt-4 text-pretty text-sm leading-6 text-muted">{highlight.label}</p>
+                <p className="mt-3 text-pretty text-sm leading-6 text-muted">{highlight.label}</p>
               </article>
             ))}
           </section>
@@ -156,7 +157,7 @@ function App() {
                   <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
                       <p className="text-xs font-bold uppercase text-accent">{item.location}</p>
-                      <h3 className="mt-2 text-balance font-display text-4xl leading-tight text-ink">
+                      <h3 className="mt-2 text-balance font-display text-3xl leading-tight text-ink">
                         {item.org}
                       </h3>
                       <p className="mt-2 text-pretty text-base leading-7 text-muted">{item.role}</p>
@@ -177,25 +178,58 @@ function App() {
 
           <section id="papers" className="section-shell">
             <SectionIntro
-              eyebrow="Selected papers"
-              title="A compact paper ledger, built for scanning."
-              body="Full titles only for now. Links can be attached later without changing the structure."
+              eyebrow="Publications"
+              title="Accepted work first. Preprints separate."
+              body="Conference, CCF tier, authorship, project-lead status, and oral markers are split into explicit tags for fast scanning."
             />
-            <div className="paper-list" aria-label="Scrollable paper list">
-              {selectedPapers.map((paper) => (
-                <article key={paper.title} className="paper-card">
-                  <div className="flex flex-wrap gap-2">
-                    {paper.markers.map((marker) => (
-                      <span key={marker} className="paper-marker">
-                        {marker}
-                      </span>
-                    ))}
-                  </div>
-                  <h3 className="mt-5 text-balance font-display text-2xl leading-tight text-ink sm:text-3xl">
-                    {paper.title}
-                  </h3>
-                </article>
-              ))}
+            <div className="publication-board">
+              <div>
+                <div className="paper-group-heading">
+                  <span>Accepted papers</span>
+                  <span>{selectedPapers.length} items</span>
+                </div>
+                <div className="paper-list" aria-label="Scrollable accepted paper list">
+                  {selectedPapers.map((paper) => (
+                    <article key={paper.title} className="paper-card">
+                      <div className="paper-meta">
+                        <span className="paper-marker paper-marker-strong">{paper.role}</span>
+                        {paper.projectLead ? <span className="paper-marker">Project Lead</span> : null}
+                        <span className="paper-marker">{paper.venue}</span>
+                        <span className="paper-marker">{paper.ccf}</span>
+                        <span className="paper-marker paper-marker-accent">{paper.distinction}</span>
+                      </div>
+                      <h3 className="paper-title">{paper.title}</h3>
+                    </article>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="paper-group-heading">
+                  <span>Preprints</span>
+                  <span>{preprints.length} item</span>
+                </div>
+                <div className="preprint-list" aria-label="Preprint list">
+                  {preprints.map((paper) => (
+                    <a
+                      key={paper.title}
+                      href={paper.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="paper-card preprint-card"
+                    >
+                      <div className="paper-meta">
+                        <span className="paper-marker paper-marker-strong">{paper.role}</span>
+                        <span className="paper-marker">{paper.venue}</span>
+                        <span className="paper-marker">{paper.ccf}</span>
+                        <span className="paper-marker paper-marker-accent">{paper.distinction}</span>
+                      </div>
+                      <h3 className="paper-title">{paper.title}</h3>
+                      <span className="paper-link-cue">Open arXiv ↗</span>
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
@@ -216,7 +250,7 @@ function App() {
                 >
                   <div>
                     <p className="text-xs font-bold uppercase text-muted">{project.stack}</p>
-                    <h3 className="mt-2 text-balance font-display text-4xl leading-tight text-ink">
+                    <h3 className="mt-2 text-balance font-display text-3xl leading-tight text-ink">
                       {project.name}
                     </h3>
                     <p className="mt-3 max-w-3xl text-pretty leading-7 text-muted">{project.summary}</p>
@@ -238,7 +272,7 @@ function App() {
             <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
                 <p className="text-xs font-bold uppercase text-white/55">Research palette</p>
-                <h2 className="mt-4 max-w-4xl text-balance font-display text-5xl leading-[0.92] sm:text-6xl">
+                <h2 className="mt-4 max-w-4xl text-balance font-display text-4xl leading-[0.94] sm:text-5xl">
                   {focusAreas.slice(0, 3).join(' · ')}
                 </h2>
                 <p className="mt-6 max-w-2xl text-pretty leading-7 text-white/68">
@@ -259,7 +293,7 @@ function App() {
         <footer id="contact" className="grid gap-6 border-t border-ink/10 py-8 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="text-xs font-bold uppercase text-muted">Contact</p>
-            <h2 className="mt-2 text-balance font-display text-4xl text-ink">
+            <h2 className="mt-2 text-balance font-display text-3xl text-ink">
               Research collaboration, open-source building, sharp technical conversations.
             </h2>
           </div>
@@ -293,8 +327,8 @@ function SectionIntro({
   return (
     <div className="section-intro">
       <p className="text-xs font-bold uppercase text-accent">{eyebrow}</p>
-      <h2 className="mt-3 text-balance font-display text-5xl leading-[0.95] text-ink">{title}</h2>
-      <p className="mt-5 text-pretty leading-7 text-muted">{body}</p>
+      <h2 className="mt-3 text-balance font-display text-4xl leading-[0.98] text-ink">{title}</h2>
+      <p className="mt-4 text-pretty text-sm leading-6 text-muted">{body}</p>
     </div>
   )
 }

@@ -103,7 +103,7 @@ a {
   overflow: hidden;
   border-radius: 2.25rem;
   background: rgb(255 255 255 / 0.68);
-  padding: clamp(1.1rem, 3vw, 2.5rem);
+  padding: clamp(1rem, 2.4vw, 2rem);
 }
 
 .hero-card::after {
@@ -160,27 +160,27 @@ a {
 }
 
 .metric-card {
-  min-height: 15rem;
-  padding: 1.4rem;
+  min-height: 12rem;
+  padding: 1.15rem;
 }
 
 .section-shell {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
+  gap: 1.2rem;
   border-radius: 2.25rem;
   background: rgb(255 255 255 / 0.48);
-  padding: clamp(1.2rem, 3vw, 2rem);
+  padding: clamp(1rem, 2.4vw, 1.65rem);
 }
 
 .section-intro {
-  max-width: 32rem;
-  padding: 0.5rem;
+  max-width: 28rem;
+  padding: 0.35rem;
 }
 
 .timeline-card,
 .paper-card {
-  padding: clamp(1.2rem, 2.8vw, 1.7rem);
+  padding: clamp(1rem, 2vw, 1.35rem);
 }
 
 .research-line {
@@ -191,11 +191,30 @@ a {
   line-height: 1.75;
 }
 
+.publication-board {
+  display: grid;
+  gap: 1rem;
+}
+
+.paper-group-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.65rem;
+  color: var(--color-muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .paper-list {
   display: flex;
   flex-direction: column;
-  max-height: 34rem;
-  gap: 0.85rem;
+  max-height: 28rem;
+  gap: 0.65rem;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-right: 0.5rem;
@@ -220,7 +239,8 @@ a {
 .paper-card {
   position: relative;
   flex: 0 0 auto;
-  min-height: 10.5rem;
+  min-height: 8.2rem;
+  transition: transform 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
 }
 
 .paper-card::after {
@@ -228,21 +248,79 @@ a {
   position: absolute;
   right: 1.25rem;
   top: 1.25rem;
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 2.1rem;
+  height: 2.1rem;
   border-radius: 999px;
   border: 1px solid rgb(197 82 47 / 0.22);
+}
+
+.paper-card:hover {
+  transform: translateY(-2px);
+  border-color: rgb(197 82 47 / 0.28);
+  box-shadow: 0 20px 70px rgb(20 23 28 / 0.1);
+}
+
+.paper-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  padding-right: 2.6rem;
 }
 
 .paper-marker {
   border: 1px solid rgb(197 82 47 / 0.22);
   border-radius: 999px;
   background: rgb(197 82 47 / 0.08);
-  padding: 0.35rem 0.7rem;
+  padding: 0.28rem 0.58rem;
   color: var(--color-accent);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.66rem;
   font-weight: 600;
+  text-transform: uppercase;
+}
+
+.paper-marker-strong {
+  border-color: rgb(20 23 28 / 0.18);
+  background: rgb(20 23 28 / 0.08);
+  color: var(--color-ink);
+}
+
+.paper-marker-accent {
+  border-color: rgb(197 82 47 / 0.34);
+  background: rgb(197 82 47 / 0.13);
+  color: var(--color-accent);
+}
+
+.paper-title {
+  margin-top: 1rem;
+  max-width: 62rem;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: clamp(1.22rem, 2.1vw, 1.75rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.preprint-list {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.preprint-card {
+  display: block;
+  min-height: auto;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.82), rgb(239 229 212 / 0.62)),
+    rgb(255 255 255 / 0.76);
+}
+
+.paper-link-cue {
+  display: inline-flex;
+  margin-top: 0.9rem;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -252,7 +330,7 @@ a {
   gap: 1.5rem;
   border-radius: 2rem;
   background: rgb(255 255 255 / 0.76);
-  padding: clamp(1.2rem, 2.8vw, 1.7rem);
+  padding: clamp(1rem, 2vw, 1.35rem);
   transition: transform 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
 }
 
