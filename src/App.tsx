@@ -248,9 +248,9 @@ function App() {
 
           <section id="projects" className="section-shell">
             <SectionIntro
-              eyebrow="Open source"
-              title="OpenDCAI systems, staged like product cards."
-              body="Starred academic tooling with moving affordances: scroll-reactive depth, jumping stars, and cards that behave less like a flat list."
+              eyebrow="Systems"
+              title="OpenDCAI projects I build and ship."
+              body="Local README artwork, live repo signals, and a horizontal shelf designed for more projects later."
             />
             <div className="project-stage">
               {projects.map((project, index) => (
@@ -264,6 +264,9 @@ function App() {
                   <span className="project-number" aria-hidden="true">
                     0{index + 1}
                   </span>
+                  <div className="project-icon-wrap" aria-hidden="true">
+                    <img className="project-icon" src={project.icon} alt="" loading="lazy" />
+                  </div>
                   <div className="project-copy">
                     <p className="text-[0.68rem] font-bold uppercase text-muted">{project.stack}</p>
                     <h3 className="mt-1.5 text-balance font-display text-2xl leading-tight text-ink">

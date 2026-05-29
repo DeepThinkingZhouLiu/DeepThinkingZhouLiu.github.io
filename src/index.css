@@ -484,19 +484,46 @@ a {
 
 .project-stage {
   display: grid;
-  gap: 0.78rem;
+  grid-auto-columns: minmax(17.5rem, 28rem);
+  grid-auto-flow: column;
+  gap: 0.9rem;
+  margin-right: calc(clamp(0.9rem, 2vw, 1.35rem) * -1);
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0.2rem clamp(0.9rem, 2vw, 1.35rem) 0.8rem 0.05rem;
   perspective: 1200px;
+  scrollbar-color: rgb(197 82 47 / 0.55) rgb(20 23 28 / 0.08);
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+}
+
+.project-stage::-webkit-scrollbar {
+  height: 0.55rem;
+}
+
+.project-stage::-webkit-scrollbar-track {
+  border-radius: 999px;
+  background: rgb(20 23 28 / 0.08);
+}
+
+.project-stage::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgb(197 82 47 / 0.55);
 }
 
 .project-row {
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 0.9rem;
-  border-radius: 1.55rem;
-  background: rgb(255 255 255 / 0.76);
-  padding: clamp(0.82rem, 1.7vw, 1.08rem);
+  min-height: 18.5rem;
+  grid-template-rows: auto 1fr auto;
+  gap: 0.8rem;
+  scroll-snap-align: start;
+  border-radius: 2.2rem 1.1rem 2.2rem 1.1rem;
+  background:
+    radial-gradient(circle at 86% 18%, rgb(197 82 47 / 0.16), transparent 6rem),
+    linear-gradient(145deg, rgb(255 255 255 / 0.92), rgb(239 229 212 / 0.62));
+  padding: 1rem;
   transform-style: preserve-3d;
   transition: transform 220ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
   will-change: transform;
@@ -514,7 +541,7 @@ a {
 }
 
 .project-row:hover {
-  transform: translateY(-4px) rotateX(1.4deg) rotateY(-1deg);
+  transform: translateY(-5px) rotateX(1.8deg) rotateY(-1.4deg);
   border-color: rgb(197 82 47 / 0.32);
   box-shadow: 0 28px 90px rgb(20 23 28 / 0.11);
 }
@@ -525,11 +552,13 @@ a {
 }
 
 .project-number {
-  position: relative;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
   z-index: 1;
   display: grid;
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2.25rem;
+  height: 2.25rem;
   place-items: center;
   border: 1px solid rgb(20 23 28 / 0.1);
   border-radius: 999px;
@@ -544,16 +573,58 @@ a {
   position: relative;
   z-index: 1;
   min-width: 0;
-  padding-right: 8.5rem;
+  align-self: end;
+  padding-right: 0;
+}
+
+.project-icon-wrap {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-height: 7.4rem;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgb(20 23 28 / 0.08);
+  border-radius: 1.6rem 0.8rem 1.6rem 0.8rem;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.68), rgb(255 255 255 / 0.22)),
+    rgb(255 255 255 / 0.42);
+  transform: translateZ(28px);
+}
+
+.project-icon-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 0.8rem;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgb(197 82 47 / 0.13), transparent 68%);
+  opacity: 0.78;
+  animation: iconHalo 3.8s ease-in-out infinite;
+}
+
+.project-icon {
+  position: relative;
+  z-index: 1;
+  max-width: min(64%, 10rem);
+  max-height: 5.6rem;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 22px rgb(20 23 28 / 0.14));
+  transform: translate3d(0, 0, 0);
+  transition: transform 260ms ease-out;
+}
+
+.project-row:hover .project-icon {
+  transform: translate3d(0, -0.24rem, 0) scale(1.04);
 }
 
 .project-action {
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
+  position: relative;
+  right: auto;
+  top: auto;
   z-index: 1;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 0.48rem;
 }
 
@@ -569,7 +640,6 @@ a {
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 700;
-  tab-size: 4;
 }
 
 .star-icon {
@@ -805,6 +875,13 @@ a {
   }
 }
 
+@keyframes iconHalo {
+  50% {
+    opacity: 0.38;
+    transform: scale(1.18);
+  }
+}
+
 @keyframes scrollOrbOne {
   from {
     opacity: 0.5;
@@ -900,8 +977,7 @@ a {
   }
 
   .project-row {
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: end;
+    align-items: stretch;
   }
 }
 
@@ -929,23 +1005,21 @@ a {
   }
 
   .project-row {
-    grid-template-columns: 1fr;
+    min-height: 17rem;
   }
 
   .project-number {
+    position: absolute;
     width: 2rem;
     height: 2rem;
   }
 
-  .project-copy {
-    padding-right: 0;
+  .project-stage {
+    grid-auto-columns: minmax(16rem, 82vw);
   }
 
   .project-action {
-    position: relative;
-    right: auto;
-    top: auto;
-    margin-top: 0.7rem;
+    margin-top: 0;
   }
 
   .scroll-ruler {
