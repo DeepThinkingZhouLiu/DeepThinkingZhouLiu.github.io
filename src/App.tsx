@@ -9,93 +9,80 @@ import {
   selectedPapers,
 } from './content/profile'
 
+const navItems = [
+  { label: 'Work', href: '#work' },
+  { label: 'Papers', href: '#papers' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+]
+
+const researchSignals = ['agents', 'post-training', 'multimodal', 'evaluation']
+
 function App() {
   return (
-    <div className="min-h-dvh bg-paper text-ink">
-      <div className="mx-auto flex max-w-7xl flex-col gap-16 px-6 pb-16 pt-6 sm:px-8 lg:px-10">
-        <header className="border-b border-line pb-10">
-          <nav
-            aria-label="Primary"
-            className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between"
-          >
-            <div className="flex items-center gap-4">
-              <div className="flex size-14 items-center justify-center rounded-full border border-line bg-white text-sm font-semibold text-accent shadow-sm">
-                ZL
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xs font-medium uppercase text-muted">
-                  Personal field notes
-                </span>
-                <span className="font-medium text-ink">{profile.navigationTitle}</span>
-              </div>
-            </div>
+    <div className="relative min-h-dvh overflow-hidden bg-paper text-ink">
+      <div className="site-grid" aria-hidden="true" />
+      <div className="ambient-orbit ambient-orbit-one" aria-hidden="true" />
+      <div className="ambient-orbit ambient-orbit-two" aria-hidden="true" />
 
-            <div className="flex flex-wrap items-center gap-3 text-sm text-muted">
-              <a href="#work" className="rounded-full border border-transparent px-3 py-2 hover:border-line hover:text-ink">
-                Work
-              </a>
-              <a href="#papers" className="rounded-full border border-transparent px-3 py-2 hover:border-line hover:text-ink">
-                Papers
-              </a>
-              <a href="#projects" className="rounded-full border border-transparent px-3 py-2 hover:border-line hover:text-ink">
-                Projects
-              </a>
-              <a href="#contact" className="rounded-full border border-transparent px-3 py-2 hover:border-line hover:text-ink">
-                Contact
-              </a>
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-10 px-5 py-5 sm:px-8 lg:px-10">
+        <header className="hero-card">
+          <nav aria-label="Primary" className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <a href="#top" className="group flex w-fit items-center gap-4">
+              <span className="grid size-13 place-items-center rounded-full border border-ink/10 bg-white/80 font-display text-2xl text-ink shadow-sm transition duration-200 group-hover:-translate-y-0.5">
+                洲
+              </span>
+              <span className="grid gap-0.5">
+                <span className="text-xs font-semibold uppercase text-muted">Academic homepage</span>
+                <span className="text-sm font-semibold text-ink">{profile.navigationTitle}</span>
+              </span>
+            </a>
+
+            <div className="flex flex-wrap items-center gap-2 text-sm text-muted">
+              {navItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className="rounded-full border border-transparent px-4 py-2 transition duration-200 hover:-translate-y-0.5 hover:border-ink/10 hover:bg-white hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </nav>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-[1.45fr_0.9fr] lg:items-start">
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-4">
-                <span className="w-fit rounded-full border border-line bg-white px-4 py-2 text-xs font-medium uppercase text-muted shadow-sm">
+          <section id="top" className="mt-12 grid gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.72fr)] lg:items-end">
+            <div className="relative grid gap-8">
+              <div className="hero-watermark" aria-hidden="true">
+                刘洲
+              </div>
+
+              <div className="animate-rise grid gap-5">
+                <p className="w-fit rounded-full border border-ink/10 bg-white/75 px-4 py-2 text-xs font-bold uppercase text-muted shadow-sm">
                   {profile.kicker}
-                </span>
-                <div className="flex flex-col gap-2">
-                  <p className="font-display text-5xl leading-none text-ink sm:text-6xl lg:text-7xl">
-                    {profile.name}
-                  </p>
-                  <p className="font-display text-3xl leading-none text-accent sm:text-4xl">
-                    {profile.nameNative}
-                  </p>
-                </div>
-                <h1 className="max-w-4xl text-balance font-display text-4xl leading-[0.96] text-ink sm:text-5xl lg:text-6xl">
-                  {profile.headline}
+                </p>
+                <h1 className="max-w-5xl text-balance font-display text-[clamp(4.6rem,13vw,13rem)] leading-[0.78] text-ink">
+                  Zhou
+                  <span className="block italic text-accent">Liu</span>
                 </h1>
-                <p className="max-w-3xl text-pretty text-lg leading-8 text-muted sm:text-xl">
+                <p className="max-w-4xl text-balance font-display text-[clamp(2rem,5vw,5.6rem)] leading-[0.9] text-ink">
+                  Research agents with taste, rigor, and measurable bite.
+                </p>
+                <p className="max-w-2xl text-pretty text-lg leading-8 text-muted sm:text-xl">
                   {profile.summary}
                 </p>
               </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-                {currentHighlights.map((highlight) => (
-                  <article
-                    key={highlight.label}
-                    className="rounded-[1.75rem] border border-line bg-white/95 p-5 shadow-sm"
-                  >
-                    <p className="font-display text-3xl leading-none text-ink tabular-nums">
-                      {highlight.value}
-                    </p>
-                    <p className="mt-3 text-pretty text-sm leading-6 text-muted">
-                      {highlight.label}
-                    </p>
-                  </article>
-                ))}
-              </div>
-
-              <div className="flex flex-wrap gap-3">
+              <div className="animate-rise-delay flex flex-wrap gap-3">
                 {contactLinks.map((link) => (
                   <a
                     key={link.label}
                     href={link.href}
-                    {...(link.external
-                      ? { target: '_blank', rel: 'noreferrer' }
-                      : {})}
-                    className={`rounded-full px-5 py-3 text-sm font-medium ${
+                    {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                    className={`rounded-full px-5 py-3 text-sm font-bold transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
                       link.primary
-                        ? 'bg-accent text-white shadow-sm'
-                        : 'border border-line bg-white text-ink shadow-sm'
+                        ? 'bg-ink text-white shadow-lg shadow-ink/10'
+                        : 'border border-ink/10 bg-white/85 text-ink shadow-sm'
                     }`}
                   >
                     {link.label}
@@ -104,86 +91,82 @@ function App() {
               </div>
             </div>
 
-            <aside className="grid gap-6 rounded-[2rem] border border-line bg-panel p-6 shadow-sm">
-              <div className="grid gap-3">
-                <p className="text-xs font-medium uppercase text-muted">
-                  Current axis
-                </p>
-                <p className="text-balance font-display text-3xl leading-tight text-ink">
-                  Building research agents that are publishable, shippable, and measurable.
-                </p>
+            <aside className="animate-rise-delay relative rounded-[2.2rem] border border-ink/10 bg-white/78 p-5 shadow-2xl shadow-ink/8">
+              <div className="rounded-[1.7rem] border border-ink/10 bg-panel/70 p-5">
+                <div className="flex items-start justify-between gap-5">
+                  <div>
+                    <p className="text-xs font-bold uppercase text-muted">Current axis</p>
+                    <h2 className="mt-3 text-balance font-display text-4xl leading-[0.95] text-ink">
+                      Publishable systems. Shippable interfaces.
+                    </h2>
+                  </div>
+                  <span className="rounded-full bg-accent px-3 py-1.5 text-xs font-bold uppercase text-white">
+                    live
+                  </span>
+                </div>
+
+                <dl className="mt-8 grid gap-3">
+                  <div className="fact-row">
+                    <dt>Base</dt>
+                    <dd>{profile.location}</dd>
+                  </div>
+                  <div className="fact-row">
+                    <dt>Affiliation</dt>
+                    <dd>{profile.affiliation}</dd>
+                  </div>
+                  <div className="fact-row">
+                    <dt>Mode</dt>
+                    <dd>research x engineering</dd>
+                  </div>
+                </dl>
               </div>
 
-              <div className="grid gap-3">
-                {focusAreas.map((area) => (
-                  <div
-                    key={area}
-                    className="rounded-[1.3rem] border border-line bg-white px-4 py-3 text-sm leading-6 text-ink shadow-sm"
-                  >
-                    {area}
+              <div className="mt-5 grid grid-cols-2 gap-3">
+                {researchSignals.map((signal) => (
+                  <div key={signal} className="rounded-[1.4rem] border border-ink/10 bg-white px-4 py-4 text-sm font-bold text-ink shadow-sm">
+                    {signal}
                   </div>
                 ))}
               </div>
-
-              <div className="rounded-[1.5rem] border border-dashed border-line bg-white px-5 py-5">
-                <p className="text-xs font-medium uppercase text-muted">
-                  Based in
-                </p>
-                <p className="mt-2 text-2xl font-medium text-ink">{profile.location}</p>
-                <p className="mt-3 text-pretty text-sm leading-6 text-muted">
-                  {profile.affiliation}
-                </p>
-              </div>
             </aside>
-          </div>
+          </section>
         </header>
 
-        <main className="grid gap-16">
-          <section
-            id="work"
-            className="grid gap-8 lg:grid-cols-[0.42fr_1fr]"
-          >
-            <div className="grid gap-4">
-              <p className="text-xs font-medium uppercase text-muted">Present</p>
-              <h2 className="text-balance font-display text-4xl text-ink">
-                Research and industry, running in parallel.
-              </h2>
-              <p className="text-pretty leading-7 text-muted">
-                My recent work spans LLM post-training, agentic reinforcement
-                learning, multimodal benchmarks, and production-facing
-                evaluation systems.
-              </p>
-            </div>
+        <main className="grid gap-10">
+          <section aria-label="Research highlights" className="grid gap-3 md:grid-cols-3">
+            {currentHighlights.map((highlight, index) => (
+              <article key={highlight.label} className="metric-card">
+                <p className="font-mono text-xs text-muted tabular-nums">0{index + 1}</p>
+                <p className="mt-8 font-display text-6xl leading-none text-ink tabular-nums">
+                  {highlight.value}
+                </p>
+                <p className="mt-4 text-pretty text-sm leading-6 text-muted">{highlight.label}</p>
+              </article>
+            ))}
+          </section>
 
+          <section id="work" className="section-shell">
+            <SectionIntro
+              eyebrow="Present"
+              title="Research and industry, running in parallel."
+              body="I work where model behavior, product constraints, and evaluation pressure meet."
+            />
             <div className="grid gap-4">
               {experience.map((item) => (
-                <article
-                  key={`${item.org}-${item.role}`}
-                  className="rounded-[2rem] border border-line bg-white p-6 shadow-sm"
-                >
-                  <div className="flex flex-col gap-3 border-b border-line pb-4 sm:flex-row sm:items-start sm:justify-between">
+                <article key={`${item.org}-${item.role}`} className="timeline-card">
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                     <div>
-                      <p className="text-xs font-medium uppercase text-muted">
-                        {item.location}
-                      </p>
-                      <h3 className="mt-2 text-balance font-display text-3xl leading-tight text-ink">
+                      <p className="text-xs font-bold uppercase text-accent">{item.location}</p>
+                      <h3 className="mt-2 text-balance font-display text-4xl leading-tight text-ink">
                         {item.org}
                       </h3>
-                      <p className="mt-2 text-pretty text-base leading-7 text-muted">
-                        {item.role}
-                      </p>
+                      <p className="mt-2 text-pretty text-base leading-7 text-muted">{item.role}</p>
                     </div>
-                    <p className="text-sm font-medium text-ink tabular-nums">
-                      {item.period}
-                    </p>
+                    <p className="font-mono text-sm text-ink tabular-nums">{item.period}</p>
                   </div>
-
-                  <ul className="mt-5 grid gap-3">
+                  <ul className="mt-6 grid gap-3">
                     {item.bullets.map((bullet) => (
-                      <li
-                        key={bullet}
-                        className="rounded-[1.4rem] border border-line/80 bg-panel px-4 py-3 text-pretty text-sm leading-7 text-muted"
-                      >
+                      <li key={bullet} className="research-line">
                         {bullet}
                       </li>
                     ))}
@@ -193,65 +176,37 @@ function App() {
             </div>
           </section>
 
-          <section
-            id="papers"
-            className="grid gap-8 lg:grid-cols-[0.42fr_1fr]"
-          >
-            <div className="grid gap-4">
-              <p className="text-xs font-medium uppercase text-muted">Selected papers</p>
-              <h2 className="text-balance font-display text-4xl text-ink">
-                A concise signal, not a full publication dump.
-              </h2>
-              <p className="text-pretty leading-7 text-muted">
-                These are the papers I would surface first for someone trying to
-                understand my research direction quickly.
-              </p>
-            </div>
-
+          <section id="papers" className="section-shell">
+            <SectionIntro
+              eyebrow="Selected papers"
+              title="A publication wall with only the signal left in."
+              body="The page should make the research direction legible in seconds, not behave like a PDF dump."
+            />
             <div className="grid gap-4 md:grid-cols-2">
               {selectedPapers.map((paper) => (
-                <article
-                  key={paper.title}
-                  className="flex h-full flex-col rounded-[2rem] border border-line bg-white p-6 shadow-sm"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="rounded-full border border-line bg-panel px-3 py-2 text-xs font-medium uppercase text-muted">
+                <article key={paper.title} className="paper-card">
+                  <div className="flex items-start justify-between gap-4">
+                    <span className="rounded-full border border-accent/20 bg-accent/8 px-3 py-1.5 text-xs font-bold uppercase text-accent">
                       {paper.badge}
                     </span>
-                    <span className="text-sm font-medium text-ink tabular-nums">
-                      {paper.year}
-                    </span>
+                    <span className="font-mono text-sm text-muted tabular-nums">{paper.year}</span>
                   </div>
-                  <h3 className="mt-5 text-balance font-display text-3xl leading-tight text-ink">
+                  <h3 className="mt-8 text-balance font-display text-4xl leading-[0.98] text-ink">
                     {paper.title}
                   </h3>
-                  <p className="mt-4 text-pretty text-base leading-7 text-muted">
-                    {paper.summary}
-                  </p>
-                  <div className="mt-auto pt-6">
-                    <p className="text-sm font-medium text-ink">{paper.venue}</p>
-                  </div>
+                  <p className="mt-4 text-pretty leading-7 text-muted">{paper.summary}</p>
+                  <p className="mt-8 border-t border-ink/10 pt-4 text-sm font-bold text-ink">{paper.venue}</p>
                 </article>
               ))}
             </div>
           </section>
 
-          <section
-            id="projects"
-            className="grid gap-8 lg:grid-cols-[0.42fr_1fr]"
-          >
-            <div className="grid gap-4">
-              <p className="text-xs font-medium uppercase text-muted">Open source</p>
-              <h2 className="text-balance font-display text-4xl text-ink">
-                Systems I want people to click into.
-              </h2>
-              <p className="text-pretty leading-7 text-muted">
-                These projects show how I think about multimodal research
-                tooling, editable outputs, workflow orchestration, and
-                evaluation.
-              </p>
-            </div>
-
+          <section id="projects" className="section-shell">
+            <SectionIntro
+              eyebrow="Open source"
+              title="Clickable systems, not decorative repo cards."
+              body="The important bit is whether a project turns research taste into usable machinery."
+            />
             <div className="grid gap-4">
               {projects.map((project) => (
                 <a
@@ -259,82 +214,84 @@ function App() {
                   href={project.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="grid gap-4 rounded-[2rem] border border-line bg-white p-6 shadow-sm"
+                  className="project-row group"
                 >
-                  <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                    <div>
-                      <p className="text-xs font-medium uppercase text-muted">
-                        {project.stack}
-                      </p>
-                      <h3 className="mt-2 text-balance font-display text-3xl leading-tight text-ink">
-                        {project.name}
-                      </h3>
-                    </div>
-                    <div className="rounded-full border border-line bg-panel px-3 py-2 text-sm font-medium text-ink tabular-nums">
-                      {project.stars}
-                    </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase text-muted">{project.stack}</p>
+                    <h3 className="mt-2 text-balance font-display text-4xl leading-tight text-ink">
+                      {project.name}
+                    </h3>
+                    <p className="mt-3 max-w-3xl text-pretty leading-7 text-muted">{project.summary}</p>
                   </div>
-                  <p className="text-pretty leading-7 text-muted">{project.summary}</p>
+                  <div className="flex items-center gap-3">
+                    <span className="rounded-full border border-ink/10 bg-white px-3 py-2 font-mono text-sm text-ink tabular-nums">
+                      {project.stars}
+                    </span>
+                    <span className="grid size-12 place-items-center rounded-full bg-ink text-white transition duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                      ↗
+                    </span>
+                  </div>
                 </a>
               ))}
             </div>
           </section>
 
-          <section className="grid gap-8 lg:grid-cols-[0.42fr_1fr]">
-            <div className="grid gap-4">
-              <p className="text-xs font-medium uppercase text-muted">Education</p>
-              <h2 className="text-balance font-display text-4xl text-ink">
-                The shortest useful version of the path so far.
-              </h2>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
+          <section className="section-shell">
+            <SectionIntro
+              eyebrow="Education"
+              title="Training path, compressed."
+              body="Enough context for credibility; not enough to turn the page back into a CV."
+            />
+            <div className="grid gap-4 md:grid-cols-3">
               {education.map((item) => (
-                <article
-                  key={`${item.school}-${item.degree}`}
-                  className="rounded-[2rem] border border-line bg-white p-5 shadow-sm"
-                >
-                  <p className="text-xs font-medium uppercase text-muted">
-                    {item.period}
-                  </p>
-                  <h3 className="mt-3 text-balance font-display text-2xl leading-tight text-ink">
+                <article key={`${item.school}-${item.degree}`} className="education-card">
+                  <p className="font-mono text-xs text-muted tabular-nums">{item.period}</p>
+                  <h3 className="mt-5 text-balance font-display text-3xl leading-tight text-ink">
                     {item.degree}
                   </h3>
-                  <p className="mt-3 text-pretty text-sm leading-6 text-muted">
-                    {item.school}
-                  </p>
-                  <p className="mt-2 text-sm font-medium text-ink">{item.city}</p>
+                  <p className="mt-4 text-pretty text-sm leading-6 text-muted">{item.school}</p>
+                  <p className="mt-4 text-sm font-bold text-ink">{item.city}</p>
                 </article>
               ))}
             </div>
           </section>
+
+          <section className="rounded-[2.5rem] border border-ink/10 bg-ink p-6 text-white shadow-2xl shadow-ink/15 sm:p-8 lg:p-10">
+            <div className="grid gap-8 lg:grid-cols-[1fr_auto] lg:items-end">
+              <div>
+                <p className="text-xs font-bold uppercase text-white/55">Research palette</p>
+                <h2 className="mt-4 max-w-4xl text-balance font-display text-5xl leading-[0.92] sm:text-6xl">
+                  {focusAreas.slice(0, 3).join(' · ')}
+                </h2>
+                <p className="mt-6 max-w-2xl text-pretty leading-7 text-white/68">
+                  The full CV is still available, but the homepage now behaves like a front door: fast signal first, details second.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 lg:max-w-sm lg:justify-end">
+                {focusAreas.map((area) => (
+                  <span key={area} className="rounded-full border border-white/15 bg-white/8 px-4 py-2 text-sm text-white/75">
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </section>
         </main>
 
-        <footer
-          id="contact"
-          className="grid gap-8 rounded-[2.5rem] border border-line bg-panel p-8 shadow-sm lg:grid-cols-[1fr_auto]"
-        >
-          <div className="grid gap-4">
-            <p className="text-xs font-medium uppercase text-muted">Contact</p>
-            <h2 className="max-w-3xl text-balance font-display text-4xl text-ink">
-              Available for research collaboration, open-source building, and
-              sharp technical conversations.
+        <footer id="contact" className="grid gap-6 border-t border-ink/10 py-8 md:grid-cols-[1fr_auto] md:items-center">
+          <div>
+            <p className="text-xs font-bold uppercase text-muted">Contact</p>
+            <h2 className="mt-2 text-balance font-display text-4xl text-ink">
+              Research collaboration, open-source building, sharp technical conversations.
             </h2>
-            <p className="max-w-2xl text-pretty leading-7 text-muted">
-              If you want a fuller publication list or recent project context,
-              use the CV first, then jump to GitHub.
-            </p>
           </div>
-
-          <div className="grid gap-3 self-start">
+          <div className="flex flex-wrap gap-3 md:justify-end">
             {contactLinks.map((link) => (
               <a
                 key={`footer-${link.label}`}
                 href={link.href}
-                {...(link.external
-                  ? { target: '_blank', rel: 'noreferrer' }
-                  : {})}
-                className="rounded-full border border-line bg-white px-5 py-3 text-center text-sm font-medium text-ink shadow-sm"
+                {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                className="rounded-full border border-ink/10 bg-white px-5 py-3 text-sm font-bold text-ink shadow-sm transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
               >
                 {link.label}
               </a>
@@ -342,6 +299,24 @@ function App() {
           </div>
         </footer>
       </div>
+    </div>
+  )
+}
+
+function SectionIntro({
+  eyebrow,
+  title,
+  body,
+}: {
+  eyebrow: string
+  title: string
+  body: string
+}) {
+  return (
+    <div className="section-intro">
+      <p className="text-xs font-bold uppercase text-accent">{eyebrow}</p>
+      <h2 className="mt-3 text-balance font-display text-5xl leading-[0.95] text-ink">{title}</h2>
+      <p className="mt-5 text-pretty leading-7 text-muted">{body}</p>
     </div>
   )
 }
