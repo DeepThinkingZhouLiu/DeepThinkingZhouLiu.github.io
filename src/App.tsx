@@ -240,7 +240,7 @@ function App() {
             <SectionIntro
               eyebrow="Education"
               title="Training path, compressed."
-              body="Enough context for credibility; not enough to turn the page back into a CV."
+              body="Enough context for credibility; not enough to turn the page back into a document dump."
             />
             <div className="grid gap-4 md:grid-cols-3">
               {education.map((item) => (
@@ -264,7 +264,7 @@ function App() {
                   {focusAreas.slice(0, 3).join(' · ')}
                 </h2>
                 <p className="mt-6 max-w-2xl text-pretty leading-7 text-white/68">
-                  The full CV is still available, but the homepage now behaves like a front door: fast signal first, details second.
+                  The homepage behaves like a front door: fast signal first, details second, with project links for deeper context.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2 lg:max-w-sm lg:justify-end">

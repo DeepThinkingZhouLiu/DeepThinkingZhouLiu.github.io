@@ -51,10 +51,4 @@ The expected production URL is:
 
 ## Content Source
 
-The page content is adapted from:
-
-- `tmp/main.pdf`
-
-The downloadable CV exposed by the site is:
-
-- [public/main.pdf](./public/main.pdf)
+The page content is adapted from local resume material and project metadata, but the deployed site does not expose a downloadable resume file.

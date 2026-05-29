@@ -144,19 +144,15 @@ export const education = [
 
 export const contactLinks = [
   {
-    label: 'Download CV',
-    href: '/main.pdf',
-    primary: true,
-    external: true,
-  },
-  {
     label: 'Email',
     href: 'mailto:zhouliu.919@qq.com',
+    primary: true,
     external: false,
   },
   {
     label: 'GitHub',
     href: 'https://github.com/DeepThinkingZhouLiu',
+    primary: false,
     external: true,
   },
 ]
