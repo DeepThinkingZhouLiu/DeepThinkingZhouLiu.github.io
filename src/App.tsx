@@ -24,6 +24,9 @@ function App() {
     <div className="relative min-h-dvh overflow-hidden bg-paper text-ink">
       <div className="site-grid" aria-hidden="true" />
       <div className="kinetic-beam" aria-hidden="true" />
+      <div className="scroll-orb scroll-orb-one" aria-hidden="true" />
+      <div className="scroll-orb scroll-orb-two" aria-hidden="true" />
+      <div className="scroll-ruler" aria-hidden="true" />
       <div className="ambient-orbit ambient-orbit-one" aria-hidden="true" />
       <div className="ambient-orbit ambient-orbit-two" aria-hidden="true" />
 
@@ -246,11 +249,11 @@ function App() {
           <section id="projects" className="section-shell">
             <SectionIntro
               eyebrow="Open source"
-              title="Clickable systems, not decorative repo cards."
-              body="The important bit is whether a project turns research taste into usable machinery."
+              title="OpenDCAI systems, staged like product cards."
+              body="Starred academic tooling with moving affordances: scroll-reactive depth, jumping stars, and cards that behave less like a flat list."
             />
-            <div className="grid gap-3">
-              {projects.map((project) => (
+            <div className="project-stage">
+              {projects.map((project, index) => (
                 <a
                   key={project.name}
                   href={project.href}
@@ -258,18 +261,24 @@ function App() {
                   rel="noreferrer"
                   className="project-row group"
                 >
-                  <div>
+                  <span className="project-number" aria-hidden="true">
+                    0{index + 1}
+                  </span>
+                  <div className="project-copy">
                     <p className="text-[0.68rem] font-bold uppercase text-muted">{project.stack}</p>
                     <h3 className="mt-1.5 text-balance font-display text-2xl leading-tight text-ink">
                       {project.name}
                     </h3>
                     <p className="mt-2 max-w-3xl text-pretty text-sm leading-6 text-muted">{project.summary}</p>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <span className="rounded-full border border-ink/10 bg-white px-3 py-1.5 font-mono text-xs text-ink tabular-nums">
+                  <div className="project-action">
+                    <span className="star-badge" aria-label={`${project.stars} on GitHub`}>
+                      <span className="star-icon" aria-hidden="true">
+                        ★
+                      </span>
                       {project.stars}
                     </span>
-                    <span className="grid size-10 place-items-center rounded-full bg-ink text-white transition duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5">
+                    <span className="project-arrow" aria-hidden="true">
                       ↗
                     </span>
                   </div>

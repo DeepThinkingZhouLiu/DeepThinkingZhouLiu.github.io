@@ -123,6 +123,14 @@ export const experience = [
 
 export const projects = [
   {
+    name: 'OpenDCAI / OpenPrism',
+    stack: 'TypeScript · LaTeX · AI workspace',
+    stars: '299 stars',
+    href: 'https://github.com/OpenDCAI/OpenPrism',
+    summary:
+      'An AI-powered academic writing workspace with LaTeX editing, PDF preview, compilation flow, and research assistance for paper production.',
+  },
+  {
     name: 'OpenDCAI / Paper2Any',
     stack: 'Python · TypeScript',
     stars: '2.1k stars',

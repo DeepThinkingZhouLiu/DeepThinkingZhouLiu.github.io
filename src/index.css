@@ -83,6 +83,57 @@ a {
   animation: beamFloat 16s ease-in-out infinite alternate;
 }
 
+.scroll-orb {
+  position: fixed;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 999px;
+  opacity: 0.58;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+}
+
+.scroll-orb-one {
+  right: 9vw;
+  top: 22vh;
+  width: clamp(5rem, 12vw, 11rem);
+  height: clamp(5rem, 12vw, 11rem);
+  border: 1px solid rgb(197 82 47 / 0.22);
+  background: radial-gradient(circle, rgb(197 82 47 / 0.12), transparent 62%);
+}
+
+.scroll-orb-two {
+  left: 5vw;
+  top: 62vh;
+  width: clamp(6rem, 18vw, 16rem);
+  height: clamp(6rem, 18vw, 16rem);
+  border: 1px solid rgb(20 23 28 / 0.1);
+  background: radial-gradient(circle, rgb(255 255 255 / 0.72), transparent 66%);
+}
+
+.scroll-ruler {
+  position: fixed;
+  right: 1rem;
+  top: 18vh;
+  z-index: 2;
+  width: 0.18rem;
+  height: 34vh;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgb(20 23 28 / 0.08);
+  pointer-events: none;
+}
+
+.scroll-ruler::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to bottom, var(--color-accent), rgb(197 82 47 / 0.18));
+  transform: scaleY(0.18);
+  transform-origin: top;
+}
+
 .ambient-orbit {
   position: fixed;
   pointer-events: none;
@@ -431,22 +482,131 @@ a {
   text-transform: uppercase;
 }
 
+.project-stage {
+  display: grid;
+  gap: 0.78rem;
+  perspective: 1200px;
+}
+
 .project-row {
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem;
   border-radius: 1.55rem;
   background: rgb(255 255 255 / 0.76);
   padding: clamp(0.82rem, 1.7vw, 1.08rem);
-  transition: transform 180ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
+  transform-style: preserve-3d;
+  transition: transform 220ms ease-out, border-color 180ms ease-out, box-shadow 180ms ease-out;
+  will-change: transform;
+}
+
+.project-row::after {
+  content: '';
+  position: absolute;
+  inset: auto 1rem 0.82rem 1rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(197 82 47 / 0.42), transparent);
+  opacity: 0.45;
+  transform: scaleX(0.28);
+  transition: transform 260ms ease-out, opacity 260ms ease-out;
 }
 
 .project-row:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px) rotateX(1.4deg) rotateY(-1deg);
   border-color: rgb(197 82 47 / 0.32);
   box-shadow: 0 28px 90px rgb(20 23 28 / 0.11);
+}
+
+.project-row:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.project-number {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 2.4rem;
+  height: 2.4rem;
+  place-items: center;
+  border: 1px solid rgb(20 23 28 / 0.1);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.78);
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.project-copy {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding-right: 8.5rem;
+}
+
+.project-action {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+}
+
+.star-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.36rem;
+  border: 1px solid rgb(20 23 28 / 0.1);
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.78);
+  padding: 0.42rem 0.64rem;
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  tab-size: 4;
+}
+
+.star-icon {
+  color: var(--color-accent);
+  display: inline-block;
+  text-shadow: 0 0 18px rgb(197 82 47 / 0.32);
+  transform-origin: 50% 62%;
+  animation: starJump 1.85s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+  will-change: transform;
+}
+
+.project-row:nth-child(2) .star-icon {
+  animation-delay: -0.28s;
+}
+
+.project-row:nth-child(3) .star-icon {
+  animation-delay: -0.56s;
+}
+
+.project-row:nth-child(4) .star-icon {
+  animation-delay: -0.84s;
+}
+
+.project-arrow {
+  display: grid;
+  width: 2.15rem;
+  height: 2.15rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: white;
+  transition: transform 220ms ease-out, background 220ms ease-out;
+}
+
+.project-row:hover .project-arrow {
+  background: var(--color-accent);
+  transform: translate3d(0.12rem, -0.12rem, 0) rotate(12deg);
 }
 
 .signal-chip {
@@ -629,13 +789,118 @@ a {
   }
 }
 
+@keyframes starJump {
+  0%,
+  68%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+
+  76% {
+    transform: translate3d(0, -0.28rem, 0) rotate(-12deg) scale(1.18);
+  }
+
+  86% {
+    transform: translate3d(0, 0.04rem, 0) rotate(8deg) scale(0.96);
+  }
+}
+
+@keyframes scrollOrbOne {
+  from {
+    opacity: 0.5;
+    transform: translate3d(0, 0, 0) scale(0.92);
+  }
+
+  to {
+    opacity: 0.2;
+    transform: translate3d(-16vw, 42vh, 0) scale(1.35) rotate(26deg);
+  }
+}
+
+@keyframes scrollOrbTwo {
+  from {
+    opacity: 0.34;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    opacity: 0.68;
+    transform: translate3d(18vw, -30vh, 0) scale(0.78) rotate(-18deg);
+  }
+}
+
+@keyframes scrollRulerFill {
+  from {
+    transform: scaleY(0.08);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes viewLift {
+  from {
+    opacity: 0.7;
+    transform: translate3d(0, 2.4rem, 0) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes projectDepth {
+  from {
+    opacity: 0.64;
+    transform: translate3d(0, 3rem, 0) rotateX(8deg) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateX(0deg) scale(1);
+  }
+}
+
+@supports (animation-timeline: scroll(root block)) {
+  .scroll-orb-one {
+    animation: scrollOrbOne linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  .scroll-orb-two {
+    animation: scrollOrbTwo linear both;
+    animation-timeline: scroll(root block);
+  }
+
+  .scroll-ruler::before {
+    animation: scrollRulerFill linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .section-shell {
+    animation: viewLift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 34%;
+  }
+
+  .project-row {
+    animation: projectDepth linear both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 42%;
+  }
+}
+
 @media (min-width: 1024px) {
   .section-shell {
     grid-template-columns: minmax(18rem, 0.42fr) 1fr;
   }
 
   .project-row {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: auto minmax(0, 1fr);
     align-items: end;
   }
 }
@@ -661,6 +926,30 @@ a {
 
   .paper-card {
     min-height: auto;
+  }
+
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+
+  .project-number {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .project-copy {
+    padding-right: 0;
+  }
+
+  .project-action {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin-top: 0.7rem;
+  }
+
+  .scroll-ruler {
+    display: none;
   }
 }
 
