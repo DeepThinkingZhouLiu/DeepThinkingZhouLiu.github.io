@@ -83,14 +83,6 @@ export const selectedPapers = [
     distinction: 'Accepted',
     projectLead: false,
   },
-  {
-    title: 'TF-IECN: Tuning-free Image Efficient Customization via Refined Collaborative Denoising Strategies',
-    role: 'Fourth author',
-    venue: 'ICMR 2025',
-    ccf: 'CCF-B',
-    distinction: 'Accepted',
-    projectLead: false,
-  },
 ]
 
 export const preprints = [
