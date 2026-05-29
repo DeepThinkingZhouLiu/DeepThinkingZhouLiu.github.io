@@ -1,7 +1,6 @@
 import {
   contactLinks,
   currentHighlights,
-  education,
   experience,
   focusAreas,
   profile,
@@ -179,23 +178,22 @@ function App() {
           <section id="papers" className="section-shell">
             <SectionIntro
               eyebrow="Selected papers"
-              title="A publication wall with only the signal left in."
-              body="The page should make the research direction legible in seconds, not behave like a PDF dump."
+              title="A compact paper ledger, built for scanning."
+              body="Full titles only for now. Links can be attached later without changing the structure."
             />
-            <div className="grid gap-4 md:grid-cols-2">
+            <div className="paper-list" aria-label="Scrollable paper list">
               {selectedPapers.map((paper) => (
                 <article key={paper.title} className="paper-card">
-                  <div className="flex items-start justify-between gap-4">
-                    <span className="rounded-full border border-accent/20 bg-accent/8 px-3 py-1.5 text-xs font-bold uppercase text-accent">
-                      {paper.badge}
-                    </span>
-                    <span className="font-mono text-sm text-muted tabular-nums">{paper.year}</span>
+                  <div className="flex flex-wrap gap-2">
+                    {paper.markers.map((marker) => (
+                      <span key={marker} className="paper-marker">
+                        {marker}
+                      </span>
+                    ))}
                   </div>
-                  <h3 className="mt-8 text-balance font-display text-4xl leading-[0.98] text-ink">
+                  <h3 className="mt-5 text-balance font-display text-2xl leading-tight text-ink sm:text-3xl">
                     {paper.title}
                   </h3>
-                  <p className="mt-4 text-pretty leading-7 text-muted">{paper.summary}</p>
-                  <p className="mt-8 border-t border-ink/10 pt-4 text-sm font-bold text-ink">{paper.venue}</p>
                 </article>
               ))}
             </div>
@@ -232,26 +230,6 @@ function App() {
                     </span>
                   </div>
                 </a>
-              ))}
-            </div>
-          </section>
-
-          <section className="section-shell">
-            <SectionIntro
-              eyebrow="Education"
-              title="Training path, compressed."
-              body="Enough context for credibility; not enough to turn the page back into a document dump."
-            />
-            <div className="grid gap-4 md:grid-cols-3">
-              {education.map((item) => (
-                <article key={`${item.school}-${item.degree}`} className="education-card">
-                  <p className="font-mono text-xs text-muted tabular-nums">{item.period}</p>
-                  <h3 className="mt-5 text-balance font-display text-3xl leading-tight text-ink">
-                    {item.degree}
-                  </h3>
-                  <p className="mt-4 text-pretty text-sm leading-6 text-muted">{item.school}</p>
-                  <p className="mt-4 text-sm font-bold text-ink">{item.city}</p>
-                </article>
               ))}
             </div>
           </section>

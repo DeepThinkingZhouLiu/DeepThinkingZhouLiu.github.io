@@ -36,36 +36,36 @@ export const focusAreas = [
 
 export const selectedPapers = [
   {
-    badge: 'ACL 2026 Main',
-    year: '2026',
-    title: 'UniDataBench',
-    summary:
-      'A benchmark for evaluating data analytics agents across both structured and unstructured data settings.',
-    venue: 'ACL 2026 Main Conference · Oral Top 5% · CCF-A',
+    title: 'UniDataBench: Evaluating Data Analytics Agents Across Structured and Unstructured Data',
+    markers: ['Co-first author', 'Project Lead'],
   },
   {
-    badge: 'CVPR 2026',
-    year: '2026',
-    title: 'Paper2SysArch',
-    summary:
-      'Structure-constrained system architecture generation from scientific papers with editable outputs.',
-    venue: 'CVPR 2026 · CCF-A',
+    title: 'Paper2SysArch: Structure-Constrained System Architecture Generation from Scientific Papers',
+    markers: ['Co-first author', 'Project Lead'],
   },
   {
-    badge: 'ACL 2026 Findings',
-    year: '2026',
-    title: 'InsightBenchMaker',
-    summary:
-      'Generating evolving, high-fidelity benchmarks for data-analysis agents rather than static one-shot test sets.',
-    venue: 'ACL 2026 Findings · CCF-A',
+    title: 'InsightBenchMaker: Towards Generating Evolving and High-Fidelity Benchmarks for Data-Analysis Agents',
+    markers: ['First author', 'Project Lead'],
   },
   {
-    badge: 'ACL 2026 Main',
-    year: '2026',
-    title: 'SciFlow',
-    summary:
-      'Evaluating structure-aware scientific diagram generation through inverse parsing and analysis-oriented metrics.',
-    venue: 'ACL 2026 Main Conference · CCF-A',
+    title: 'SciFlow: Evaluating Structure-Aware Scientific Diagram Generation via Inverse Parsing',
+    markers: ['Co-first author', 'Project Lead'],
+  },
+  {
+    title: 'Reinforcement Learning with Semantic Rewards Enables Low-Resource Language Expansion without Alignment Tax',
+    markers: ['Co-first author'],
+  },
+  {
+    title: 'LongInsightBench: A Comprehensive Benchmark for Evaluating Omni-Modal Models on Human-Centric Long-Video Understanding',
+    markers: ['Fifth author'],
+  },
+  {
+    title: 'TF-IECN: Tuning-free Image Efficient Customization via Refined Collaborative Denoising Strategies',
+    markers: ['Fourth author'],
+  },
+  {
+    title: 'MSDM: Multi-Space Diffusion With Dynamic Loss Weight',
+    markers: ['First author'],
   },
 ]
 
@@ -118,27 +118,6 @@ export const projects = [
     href: 'https://github.com/OpenDCAI/DataFlow',
     summary:
       'Data preparation, retrieval augmentation, and evaluation-oriented pipelines for domain-specific data workflows.',
-  },
-]
-
-export const education = [
-  {
-    degree: 'PhD in Data Science and Engineering',
-    school: 'Peking University · Academy for Advanced Interdisciplinary Studies',
-    city: 'Beijing',
-    period: '2025.09 — Present',
-  },
-  {
-    degree: 'MSc in Computer Science and Technology',
-    school: 'South-Central Minzu University · School of Computer Science',
-    city: 'Wuhan',
-    period: '2022.09 — 2025.06',
-  },
-  {
-    degree: 'BSc in Software Engineering',
-    school: 'South-Central Minzu University · School of Computer Science',
-    city: 'Wuhan',
-    period: '2018.09 — 2022.06',
   },
 ]
 
