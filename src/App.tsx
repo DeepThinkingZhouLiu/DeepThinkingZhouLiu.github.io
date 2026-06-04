@@ -18,6 +18,9 @@ const navItems = [
 
 const researchSignals = ['agents', 'post-training', 'multimodal', 'evaluation']
 const kineticSignals = ['ACL Main Oral', 'CVPR 2026', 'CCF-A', 'RL agents', 'arXiv preprint', 'tool use']
+const hitsDashboardUrl = 'https://hits.sh/deepthinkingzhouliu.github.io/'
+const hitsBadgeUrl =
+  'https://hits.sh/deepthinkingzhouliu.github.io.svg?style=flat-square&label=page%20views&color=c5522f&labelColor=14171c'
 
 function App() {
   return (
@@ -319,17 +322,38 @@ function App() {
               Research collaboration, open-source building, sharp technical conversations.
             </h2>
           </div>
-          <div className="flex flex-wrap gap-2 md:justify-end">
-            {contactLinks.map((link) => (
-              <a
-                key={`footer-${link.label}`}
-                href={link.href}
-                {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                className="rounded-full border border-ink/10 bg-white px-4 py-2 text-xs font-bold text-ink shadow-sm transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
-              >
-                {link.label}
-              </a>
-            ))}
+          <div className="grid gap-3 md:justify-items-end">
+            <div className="flex flex-wrap gap-2 md:justify-end">
+              {contactLinks.map((link) => (
+                <a
+                  key={`footer-${link.label}`}
+                  href={link.href}
+                  {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
+                  className="rounded-full border border-ink/10 bg-white px-4 py-2 text-xs font-bold text-ink shadow-sm transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            <a
+              href={hitsDashboardUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex w-fit flex-col items-start gap-2 rounded-[1.35rem] border border-ink/10 bg-white/82 px-3.5 py-3 shadow-sm transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:justify-self-end"
+            >
+              <span className="font-mono text-[0.62rem] font-bold uppercase tracking-[0.18em] text-muted">
+                Traffic
+              </span>
+              <img
+                src={hitsBadgeUrl}
+                alt="Homepage page views badge"
+                loading="lazy"
+                decoding="async"
+                className="block h-5 w-auto"
+              />
+              <span className="text-[0.7rem] leading-5 text-muted">Public page-hit stats ↗</span>
+            </a>
           </div>
         </footer>
       </div>
