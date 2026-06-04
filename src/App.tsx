@@ -8,6 +8,8 @@ import {
   projects,
   selectedPapers,
 } from './content/profile'
+import NewsUpdates from './components/NewsUpdates'
+import { newsUpdates } from './content/news'
 
 const navItems = [
   { label: 'Work', href: '#work' },
@@ -160,6 +162,8 @@ function App() {
               </article>
             ))}
           </section>
+
+          <NewsUpdates items={newsUpdates} />
 
           <section id="work" className="section-shell">
             <SectionIntro
