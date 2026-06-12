@@ -7,6 +7,13 @@ export const profile = {
     'Building research agents, multimodal systems, and post-training pipelines with a bias toward measurable results.',
   summary:
     'PhD student in Data Science and Engineering at Peking University. My recent work focuses on LLM post-training, reinforcement learning for agents, multimodal benchmark construction, and automated evaluation systems that are useful both in papers and in production.',
+  collaboration:
+    'Open to research collaborations on LLM agents, post-training, multimodal systems, benchmark construction, and automated evaluation.',
+  advisor: {
+    name: 'Prof. Wentao Zhang',
+    href: 'https://zwt233.github.io/',
+    affiliation: 'Peking University',
+  },
   affiliation: 'Peking University · ByteDance Volcano Engine',
   location: 'Beijing, China',
 }

@@ -320,6 +320,16 @@ function App() {
                 <p className="max-w-2xl text-pretty text-sm leading-6 text-muted sm:text-base">
                   {profile.summary}
                 </p>
+                <p className="profile-note max-w-2xl text-pretty text-sm leading-6 text-ink sm:text-base">
+                  {profile.collaboration}
+                </p>
+                <p className="profile-advisor max-w-2xl text-pretty text-xs leading-5 text-muted sm:text-sm">
+                  Ph.D. advisor:{' '}
+                  <a href={profile.advisor.href} target="_blank" rel="noreferrer">
+                    {profile.advisor.name}
+                  </a>
+                  , {profile.advisor.affiliation}.
+                </p>
               </div>
 
               <div className="animate-rise-delay flex flex-wrap gap-2">
@@ -344,9 +354,9 @@ function App() {
               <div className="border border-ink/10 bg-panel/70 p-4">
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <p className="text-[0.68rem] font-bold uppercase text-muted">Current axis</p>
+                    <p className="text-[0.68rem] font-bold uppercase text-muted">Collaboration</p>
                     <h2 className="mt-2 text-balance font-display text-2xl leading-[1] text-ink">
-                      Publishable systems. Shippable interfaces.
+                      Open to research collaboration.
                     </h2>
                   </div>
                   <span className="pulse-dot bg-accent px-2.5 py-1 text-[0.66rem] font-bold uppercase text-white">
