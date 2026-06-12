@@ -95,6 +95,57 @@ a {
     linear-gradient(102deg, transparent 0 48%, rgb(184 69 36 / 0.12) 48% 49%, transparent 49% 100%),
     linear-gradient(168deg, transparent 0 69%, rgb(17 20 25 / 0.06) 69% 70%, transparent 70% 100%);
   opacity: 0.8;
+  will-change: transform, opacity;
+}
+
+.cursor-tracer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 8;
+  width: 1.45rem;
+  height: 1.45rem;
+  border: 1px solid rgb(184 69 36 / 0.72);
+  background:
+    linear-gradient(90deg, transparent 47%, rgb(184 69 36 / 0.45) 47% 53%, transparent 53%),
+    linear-gradient(0deg, transparent 47%, rgb(184 69 36 / 0.45) 47% 53%, transparent 53%);
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  transform: translate3d(-999px, -999px, 0);
+  will-change: transform, opacity;
+}
+
+.motion-glyph {
+  position: fixed;
+  z-index: 1;
+  pointer-events: none;
+  color: rgb(17 20 25 / 0.12);
+  font-family: var(--font-mono);
+  font-size: clamp(2.4rem, 8vw, 8rem);
+  font-weight: 700;
+  letter-spacing: -0.1em;
+  line-height: 0.82;
+  mix-blend-mode: multiply;
+  will-change: transform, opacity;
+}
+
+.motion-glyph-one {
+  left: 2vw;
+  top: 23vh;
+}
+
+.motion-glyph-two {
+  right: 3vw;
+  top: 48vh;
+  color: rgb(184 69 36 / 0.14);
+}
+
+.motion-glyph-three {
+  left: 5vw;
+  bottom: 8vh;
+  font-size: clamp(1.8rem, 5vw, 5.5rem);
+  color: rgb(17 20 25 / 0.08);
 }
 
 .scroll-orb,
@@ -149,6 +200,7 @@ footer {
   border: 1px solid var(--rule);
   background: rgb(251 247 238 / 0.82);
   box-shadow: none;
+  --accent-shift: 0px;
 }
 
 .hero-card {
@@ -301,6 +353,7 @@ footer a:hover {
   background: transparent;
   padding: clamp(0.78rem, 1.7vw, 1.05rem);
   box-shadow: none;
+  will-change: transform, opacity;
 }
 
 .metric-card:last-child {
@@ -318,6 +371,29 @@ footer a:hover {
   border-top: 0;
   overflow: hidden;
   padding: 0;
+}
+
+.section-shell::before,
+.metric-strip::before,
+footer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(110deg, transparent 0 48%, rgb(184 69 36 / 0.13) 48% 49%, transparent 49% 100%),
+    linear-gradient(90deg, transparent, rgb(255 255 255 / 0.32), transparent);
+  opacity: 0.42;
+  transform: translate3d(var(--accent-shift), 0, 0);
+  will-change: transform;
+}
+
+.section-shell > *,
+.metric-strip > *,
+footer > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-intro {
@@ -350,6 +426,7 @@ footer a:hover {
   border-bottom: 1px solid var(--rule-soft);
   background: transparent;
   box-shadow: none;
+  will-change: transform, opacity;
 }
 
 .timeline-card {
@@ -469,6 +546,7 @@ footer a:hover {
   background:
     linear-gradient(90deg, rgb(184 69 36 / 0.12), transparent 56%),
     rgb(251 247 238 / 0.6);
+  background-size: 220% 100%;
 }
 
 .paper-card-featured .paper-index {
@@ -710,7 +788,7 @@ footer a:hover {
   padding: 0;
   transform-style: flat;
   transition: background 160ms ease-out;
-  will-change: auto;
+  will-change: transform, opacity;
 }
 
 .project-row:hover {

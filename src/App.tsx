@@ -1,3 +1,8 @@
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
 import {
   contactLinks,
   currentHighlights,
@@ -24,11 +29,237 @@ const hitsDashboardUrl = 'https://hits.sh/deepthinkingzhouliu.github.io/'
 const hitsBadgeUrl =
   'https://hits.sh/deepthinkingzhouliu.github.io.svg?style=flat-square&label=page%20views&color=c5522f&labelColor=14171c'
 
+gsap.registerPlugin(useGSAP, ScrollTrigger)
+
 function App() {
+  const rootRef = useRef<HTMLDivElement | null>(null)
+
+  useGSAP(
+    () => {
+      const root = rootRef.current
+      if (!root) {
+        return
+      }
+
+      const select = gsap.utils.selector(root)
+      const mm = gsap.matchMedia()
+
+      mm.add(
+        {
+          reduceMotion: '(prefers-reduced-motion: reduce)',
+          finePointer: '(pointer: fine)',
+          desktop: '(min-width: 900px)',
+        },
+        (mediaContext) => {
+          const { reduceMotion, finePointer, desktop } = mediaContext.conditions ?? {}
+
+          if (reduceMotion) {
+            gsap.set(
+              [
+                '.hero-card',
+                '.metric-card',
+                '.section-shell',
+                '.timeline-card',
+                '.paper-card',
+                '.project-row',
+                '.motion-glyph',
+                '.cursor-tracer',
+              ],
+              { clearProps: 'all' },
+            )
+            return
+          }
+
+          gsap.set(['.hero-card', '.section-shell', '.metric-card', '.timeline-card', '.paper-card', '.project-row'], {
+            transformOrigin: '50% 50%',
+            willChange: 'transform, opacity',
+          })
+
+          const intro = gsap.timeline({ defaults: { ease: 'expo.out' } })
+          intro
+            .from('.site-grid', { autoAlpha: 0, scale: 1.04, duration: 0.9 }, 0)
+            .from('.kinetic-beam', { autoAlpha: 0, xPercent: -8, skewX: -10, duration: 1.1 }, 0)
+            .from('.hero-card', { autoAlpha: 0, y: 22, scale: 0.985, duration: 0.72 }, 0.05)
+            .from('.hero-card nav > *', { autoAlpha: 0, y: -14, stagger: 0.08, duration: 0.58 }, 0.18)
+            .from('.kinetic-tape', { autoAlpha: 0, scaleX: 0, transformOrigin: 'left center', duration: 0.62 }, 0.28)
+            .from('.hero-copy .animate-rise > *', { autoAlpha: 0, y: 34, rotateX: -10, stagger: 0.065, duration: 0.72 }, 0.34)
+            .from('.hero-watermark', { autoAlpha: 0, x: 80, skewX: -16, duration: 0.9 }, 0.42)
+            .from('.hero-card aside', { autoAlpha: 0, x: 42, rotateY: -8, duration: 0.78 }, 0.5)
+            .from('.signal-chip', { autoAlpha: 0, y: 18, stagger: { each: 0.045, from: 'random' }, duration: 0.48 }, 0.72)
+            .from('.animate-rise-delay > *', { autoAlpha: 0, y: 18, stagger: 0.05, duration: 0.5 }, 0.78)
+            .from('.metric-card', { autoAlpha: 0, y: 30, skewY: 2, stagger: 0.09, duration: 0.65 }, 0.88)
+            .from('.motion-glyph', { autoAlpha: 0, y: 80, rotation: -18, stagger: 0.08, duration: 1.1 }, 0.2)
+
+          gsap.to('.kinetic-beam', {
+            xPercent: 5,
+            yPercent: -3,
+            skewX: 7,
+            duration: 7.5,
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true,
+          })
+
+          gsap.to('.site-grid', {
+            x: 68,
+            y: 68,
+            duration: 18,
+            ease: 'none',
+            repeat: -1,
+          })
+
+          gsap.to('.motion-glyph', {
+            y: (index) => [-18, 22, -12][index % 3],
+            rotation: (index) => [4, -7, 10][index % 3],
+            duration: (index) => [4.8, 6.2, 5.4][index % 3],
+            ease: 'sine.inOut',
+            repeat: -1,
+            yoyo: true,
+            stagger: 0.18,
+          })
+
+          ScrollTrigger.batch(select('.section-shell'), {
+            start: 'top 82%',
+            interval: 0.08,
+            batchMax: 3,
+            onEnter: (batch) => {
+              gsap.fromTo(
+                batch,
+                { autoAlpha: 0, y: 44, skewY: 1.5 },
+                { autoAlpha: 1, y: 0, skewY: 0, duration: 0.72, stagger: 0.08, ease: 'power3.out', overwrite: 'auto' },
+              )
+            },
+            onEnterBack: (batch) => {
+              gsap.to(batch, { autoAlpha: 1, y: 0, skewY: 0, duration: 0.42, stagger: 0.05, overwrite: 'auto' })
+            },
+          })
+
+          ScrollTrigger.batch(select('.timeline-card, .paper-card, .project-row'), {
+            start: 'top 88%',
+            interval: 0.08,
+            batchMax: desktop ? 6 : 3,
+            onEnter: (batch) => {
+              gsap.fromTo(
+                batch,
+                { autoAlpha: 0, x: desktop ? -28 : 0, y: desktop ? 0 : 24 },
+                { autoAlpha: 1, x: 0, y: 0, duration: 0.55, stagger: 0.045, ease: 'power2.out', overwrite: 'auto' },
+              )
+            },
+          })
+
+          gsap.utils.toArray<HTMLElement>('.section-shell').forEach((section, index) => {
+            gsap.to(section, {
+              '--accent-shift': `${index % 2 ? -38 : 38}px`,
+              scrollTrigger: {
+                trigger: section,
+                start: 'top bottom',
+                end: 'bottom top',
+                scrub: 0.8,
+              },
+            })
+          })
+
+          gsap.utils.toArray<HTMLElement>('.paper-card-featured').forEach((paper) => {
+            gsap.to(paper, {
+              backgroundPosition: '120% 0%',
+              duration: 3.8,
+              ease: 'sine.inOut',
+              repeat: -1,
+              yoyo: true,
+            })
+          })
+
+          gsap.utils.toArray<HTMLElement>('.star-icon').forEach((star, index) => {
+            gsap.to(star, {
+              y: -4,
+              rotation: index % 2 ? -12 : 12,
+              scale: 1.18,
+              duration: 0.7,
+              ease: 'power1.inOut',
+              repeat: -1,
+              yoyo: true,
+              delay: index * 0.12,
+            })
+          })
+
+          if (finePointer) {
+            const cleanupFns: Array<() => void> = []
+            const tracer = select('.cursor-tracer')[0] as HTMLElement | undefined
+            const beam = select('.kinetic-beam')[0] as HTMLElement | undefined
+            const watermark = select('.hero-watermark')[0] as HTMLElement | undefined
+            const xTo = tracer ? gsap.quickTo(tracer, 'x', { duration: 0.28, ease: 'power3.out' }) : null
+            const yTo = tracer ? gsap.quickTo(tracer, 'y', { duration: 0.28, ease: 'power3.out' }) : null
+            const beamXTo = beam ? gsap.quickTo(beam, 'x', { duration: 0.8, ease: 'power3.out' }) : null
+            const beamYTo = beam ? gsap.quickTo(beam, 'y', { duration: 0.8, ease: 'power3.out' }) : null
+            const markXTo = watermark ? gsap.quickTo(watermark, 'x', { duration: 0.7, ease: 'power3.out' }) : null
+            const markYTo = watermark ? gsap.quickTo(watermark, 'y', { duration: 0.7, ease: 'power3.out' }) : null
+
+            const handlePointerMove = (event: PointerEvent) => {
+              const x = event.clientX
+              const y = event.clientY
+              const relX = x / window.innerWidth - 0.5
+              const relY = y / window.innerHeight - 0.5
+
+              xTo?.(x - 12)
+              yTo?.(y - 12)
+              beamXTo?.(relX * 42)
+              beamYTo?.(relY * 36)
+              markXTo?.(relX * -26)
+              markYTo?.(relY * -18)
+            }
+
+            window.addEventListener('pointermove', handlePointerMove)
+
+            gsap.utils.toArray<HTMLElement>('a, .paper-card, .metric-card, .project-row').forEach((target) => {
+              const onEnter = () => {
+                gsap.to(target, { x: 3, y: -3, duration: 0.22, ease: 'power2.out', overwrite: 'auto' })
+                if (tracer) {
+                  gsap.to(tracer, { scale: 2.3, autoAlpha: 0.42, duration: 0.18, ease: 'power2.out', overwrite: 'auto' })
+                }
+              }
+              const onLeave = () => {
+                gsap.to(target, { x: 0, y: 0, duration: 0.34, ease: 'elastic.out(1, 0.55)', overwrite: 'auto' })
+                if (tracer) {
+                  gsap.to(tracer, { scale: 1, autoAlpha: 0.28, duration: 0.24, ease: 'power2.out', overwrite: 'auto' })
+                }
+              }
+
+              target.addEventListener('pointerenter', onEnter)
+              target.addEventListener('pointerleave', onLeave)
+
+              cleanupFns.push(() => {
+                target.removeEventListener('pointerenter', onEnter)
+                target.removeEventListener('pointerleave', onLeave)
+              })
+            })
+
+            return () => {
+              window.removeEventListener('pointermove', handlePointerMove)
+              cleanupFns.forEach((cleanup) => cleanup())
+            }
+          }
+        },
+      )
+
+      return () => mm.revert()
+    },
+    { scope: rootRef },
+  )
+
   return (
-    <div className="relative min-h-dvh overflow-hidden bg-paper text-ink">
+    <div ref={rootRef} className="relative min-h-dvh overflow-hidden bg-paper text-ink">
       <div className="site-grid" aria-hidden="true" />
       <div className="kinetic-beam" aria-hidden="true" />
+      <div className="cursor-tracer" aria-hidden="true" />
+      <div className="motion-glyph motion-glyph-one" aria-hidden="true">
+        RL
+      </div>
+      <div className="motion-glyph motion-glyph-two" aria-hidden="true">
+        VLM
+      </div>
+      <div className="motion-glyph motion-glyph-three" aria-hidden="true">
+        AGENT
+      </div>
       <div className="scroll-orb scroll-orb-one" aria-hidden="true" />
       <div className="scroll-orb scroll-orb-two" aria-hidden="true" />
       <div className="scroll-ruler" aria-hidden="true" />
