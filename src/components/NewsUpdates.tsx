@@ -8,24 +8,14 @@ gsap.registerPlugin(useGSAP)
 
 const emptySlots = [
   {
-    label: 'Slot 01',
-    title: 'Awaiting next public update',
-    detail: 'Reserve this lane for accepts, releases, talks, or milestone notes.',
+    label: 'Next',
+    title: 'Paper decision / release',
+    detail: 'Reserved for public research milestones.',
   },
   {
-    label: 'Slot 02',
-    title: 'Research progress can land here',
-    detail: 'Examples: paper decisions, benchmark releases, demos, or workshop talks.',
-  },
-  {
-    label: 'Slot 03',
-    title: 'Compact by design',
-    detail: 'Short updates work best here: date first, one strong line, optional link.',
-  },
-  {
-    label: 'Slot 04',
-    title: 'Ready whenever needed',
-    detail: 'The feed is intentionally quiet until there is something worth publishing.',
+    label: 'Later',
+    title: 'Talk / demo note',
+    detail: 'Short notes only, so the feed stays compact.',
   },
 ]
 
@@ -83,13 +73,13 @@ function NewsUpdates({ items }: { items: NewsUpdate[] }) {
 
   return (
     <section ref={rootRef} className="section-shell news-shell" aria-labelledby="news-title">
-      <div className="section-intro">
+      <div className="section-intro news-intro">
         <p className="text-[0.68rem] font-bold uppercase text-accent">News / Updates</p>
         <h2 id="news-title" className="mt-2 text-balance font-display text-3xl leading-[1] text-ink">
-          A narrow stream for accepts, releases, and talks.
+          Reserved stream.
         </h2>
         <p className="mt-3 text-pretty text-xs leading-5 text-muted">
-          Small on purpose. This feed stays quiet until there is something worth announcing.
+          Paper accepts, releases, talks. Small by design.
         </p>
       </div>
 

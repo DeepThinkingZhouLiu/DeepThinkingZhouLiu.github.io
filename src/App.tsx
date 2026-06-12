@@ -35,11 +35,11 @@ function App() {
       <div className="ambient-orbit ambient-orbit-one" aria-hidden="true" />
       <div className="ambient-orbit ambient-orbit-two" aria-hidden="true" />
 
-      <div className="relative mx-auto flex w-full max-w-[1240px] flex-col gap-5 px-4 py-4 sm:px-6 lg:px-8">
+      <div className="site-frame relative mx-auto flex w-full max-w-[1240px] flex-col px-4 sm:px-6 lg:px-8">
         <header className="hero-card">
           <nav aria-label="Primary" className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
             <a href="#top" className="group flex w-fit items-center gap-3">
-              <span className="grid size-11 place-items-center rounded-full border border-ink/10 bg-white/80 font-display text-xl text-ink shadow-sm transition duration-200 group-hover:-translate-y-0.5">
+              <span className="grid size-11 place-items-center border border-ink/10 bg-white/80 font-display text-xl text-ink transition duration-200 group-hover:-translate-y-0.5">
                 洲
               </span>
               <span className="grid gap-0.5">
@@ -53,7 +53,7 @@ function App() {
                 <a
                   key={item.href}
                   href={item.href}
-                  className="rounded-full border border-transparent px-3 py-1.5 transition duration-200 hover:-translate-y-0.5 hover:border-ink/10 hover:bg-white hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  className="border border-transparent px-3 py-1.5 transition duration-200 hover:-translate-y-0.5 hover:border-ink/10 hover:bg-white hover:text-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
                   {item.label}
                 </a>
@@ -69,14 +69,14 @@ function App() {
             </div>
           </div>
 
-          <section id="top" className="mt-6 grid gap-5 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.62fr)] lg:items-end">
-            <div className="relative grid gap-4">
+          <section id="top" className="hero-grid mt-5 grid lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.62fr)] lg:items-end">
+            <div className="hero-copy relative grid">
               <div className="hero-watermark" aria-hidden="true">
                 刘洲
               </div>
 
               <div className="animate-rise grid gap-3">
-                <p className="w-fit rounded-full border border-ink/10 bg-white/75 px-3 py-1.5 text-[0.68rem] font-bold uppercase text-muted shadow-sm">
+                <p className="w-fit border border-ink/10 bg-white/75 px-3 py-1.5 text-[0.68rem] font-bold uppercase text-muted">
                   {profile.kicker}
                 </p>
                 <h1 className="max-w-5xl text-balance font-display text-[clamp(3.1rem,8vw,7.2rem)] leading-[0.84] text-ink">
@@ -97,10 +97,10 @@ function App() {
                     key={link.label}
                     href={link.href}
                     {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                    className={`rounded-full px-4 py-2 text-xs font-bold transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
+                    className={`px-4 py-2 text-xs font-bold transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent ${
                       link.primary
-                        ? 'bg-ink text-white shadow-lg shadow-ink/10'
-                        : 'border border-ink/10 bg-white/85 text-ink shadow-sm'
+                        ? 'bg-ink text-white'
+                        : 'border border-ink/10 bg-white/85 text-ink'
                     }`}
                   >
                     {link.label}
@@ -109,16 +109,16 @@ function App() {
               </div>
             </div>
 
-            <aside className="animate-rise-delay relative rounded-[1.8rem] border border-ink/10 bg-white/78 p-4 shadow-2xl shadow-ink/8">
-              <div className="rounded-[1.35rem] border border-ink/10 bg-panel/70 p-4">
-                <div className="flex items-start justify-between gap-4">
+            <aside className="animate-rise-delay relative border border-ink/10 bg-white/78 p-4">
+              <div className="border border-ink/10 bg-panel/70 p-4">
+                <div className="flex items-start justify-between gap-2">
                   <div>
                     <p className="text-[0.68rem] font-bold uppercase text-muted">Current axis</p>
                     <h2 className="mt-2 text-balance font-display text-2xl leading-[1] text-ink">
                       Publishable systems. Shippable interfaces.
                     </h2>
                   </div>
-                  <span className="pulse-dot rounded-full bg-accent px-2.5 py-1 text-[0.66rem] font-bold uppercase text-white">
+                  <span className="pulse-dot bg-accent px-2.5 py-1 text-[0.66rem] font-bold uppercase text-white">
                     live
                   </span>
                 </div>
@@ -141,7 +141,7 @@ function App() {
 
               <div className="mt-3 grid grid-cols-[repeat(2,minmax(0,1fr))] gap-2 overflow-hidden">
                 {researchSignals.map((signal) => (
-                  <div key={signal} className="signal-chip min-w-0 rounded-[1.1rem] border border-ink/10 bg-white px-3 py-2.5 text-xs font-bold text-ink shadow-sm">
+                  <div key={signal} className="signal-chip min-w-0 border border-ink/10 bg-white px-3 py-2.5 text-xs font-bold text-ink">
                     {signal}
                   </div>
                 ))}
@@ -150,8 +150,8 @@ function App() {
           </section>
         </header>
 
-        <main className="grid gap-5">
-          <section aria-label="Research highlights" className="grid gap-3 md:grid-cols-3">
+        <main className="main-stack grid">
+          <section aria-label="Research highlights" className="metric-strip grid gap-3 md:grid-cols-3">
             {currentHighlights.map((highlight, index) => (
               <article key={highlight.label} className="metric-card">
                 <p className="font-mono text-xs text-muted tabular-nums">0{index + 1}</p>
@@ -171,7 +171,7 @@ function App() {
               title="Research and industry, running in parallel."
               body="I work where model behavior, product constraints, and evaluation pressure meet."
             />
-            <div className="grid gap-4">
+            <div className="timeline-stack grid">
               {experience.map((item) => (
                 <article key={`${item.org}-${item.role}`} className="timeline-card">
                   <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
@@ -209,18 +209,31 @@ function App() {
                   <span>{selectedPapers.length} items</span>
                 </div>
                 <div className="paper-list" aria-label="Scrollable accepted paper list">
-                  {selectedPapers.map((paper) => (
-                    <article key={paper.title} className="paper-card">
-                      <div className="paper-meta">
-                        <span className="paper-marker paper-marker-strong">{paper.role}</span>
-                        {paper.projectLead ? <span className="paper-marker">Project Lead</span> : null}
-                        <span className="paper-marker">{paper.venue}</span>
-                        <span className="paper-marker">{paper.ccf}</span>
-                        <span className="paper-marker paper-marker-accent">{paper.distinction}</span>
-                      </div>
-                      <h3 className="paper-title">{paper.title}</h3>
-                    </article>
-                  ))}
+                  {selectedPapers.map((paper, index) => {
+                    const isFeaturedPaper = paper.role.includes('First author') || paper.role.includes('Co-first author')
+
+                    return (
+                      <article
+                        key={paper.title}
+                        className={`paper-card ${isFeaturedPaper ? 'paper-card-featured' : 'paper-card-standard'}`}
+                      >
+                        <span className="paper-index" aria-hidden="true">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <div className="paper-content">
+                          <div className="paper-meta">
+                            <span className="paper-marker paper-marker-strong">{paper.role}</span>
+                            {isFeaturedPaper ? <span className="paper-marker paper-marker-priority">Featured</span> : null}
+                            {paper.projectLead ? <span className="paper-marker">Project Lead</span> : null}
+                            <span className="paper-marker">{paper.venue}</span>
+                            <span className="paper-marker">{paper.ccf}</span>
+                            <span className="paper-marker paper-marker-accent">{paper.distinction}</span>
+                          </div>
+                          <h3 className="paper-title">{paper.title}</h3>
+                        </div>
+                      </article>
+                    )
+                  })}
                 </div>
               </div>
 
@@ -297,7 +310,7 @@ function App() {
             </div>
           </section>
 
-          <section className="kinetic-dark rounded-[2rem] border border-ink/10 bg-ink p-5 text-white shadow-2xl shadow-ink/15 sm:p-6 lg:p-7">
+          <section className="kinetic-dark border border-ink/10 bg-ink p-5 text-white sm:p-6 lg:p-7">
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
               <div>
                 <p className="text-[0.68rem] font-bold uppercase text-white/55">Research palette</p>
@@ -310,7 +323,7 @@ function App() {
               </div>
               <div className="flex flex-wrap gap-2 lg:max-w-sm lg:justify-end">
                 {focusAreas.map((area) => (
-                  <span key={area} className="rounded-full border border-white/15 bg-white/8 px-3 py-1.5 text-xs text-white/75">
+                  <span key={area} className="border border-white/15 bg-white/8 px-3 py-1.5 text-xs text-white/75">
                     {area}
                   </span>
                 ))}
@@ -319,7 +332,7 @@ function App() {
           </section>
         </main>
 
-        <footer id="contact" className="grid gap-5 border-t border-ink/10 py-6 md:grid-cols-[1fr_auto] md:items-center">
+        <footer id="contact" className="grid border-t border-ink/10 py-6 md:grid-cols-[1fr_auto] md:items-center">
           <div>
             <p className="text-[0.68rem] font-bold uppercase text-muted">Contact</p>
             <h2 className="mt-1.5 text-balance font-display text-2xl text-ink">
@@ -333,7 +346,7 @@ function App() {
                   key={`footer-${link.label}`}
                   href={link.href}
                   {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-                  className="rounded-full border border-ink/10 bg-white px-4 py-2 text-xs font-bold text-ink shadow-sm transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                  className="border border-ink/10 bg-white px-4 py-2 text-xs font-bold text-ink transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
                 >
                   {link.label}
                 </a>
@@ -344,7 +357,7 @@ function App() {
               href={hitsDashboardUrl}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex w-fit flex-col items-start gap-2 rounded-[1.35rem] border border-ink/10 bg-white/82 px-3.5 py-3 shadow-sm transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:justify-self-end"
+              className="inline-flex w-fit flex-col items-start gap-2 border border-ink/10 bg-white/82 px-3.5 py-3 transition duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent md:justify-self-end"
             >
               <span className="font-mono text-[0.62rem] font-bold uppercase tracking-[0.18em] text-muted">
                 Traffic
