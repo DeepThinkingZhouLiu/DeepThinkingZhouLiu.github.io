@@ -28,6 +28,10 @@ export const currentHighlights = [
     label: 'ACL Main oral result on data analytics agents and structured-unstructured reasoning',
   },
   {
+    value: 'CVPR',
+    label: 'Vision-Language Agent Security Challenge award',
+  },
+  {
     value: '5k+',
     label: 'combined stars around the OpenDCAI projects I actively contribute to',
   },

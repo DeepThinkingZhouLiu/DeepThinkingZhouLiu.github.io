@@ -392,7 +392,7 @@ function App() {
         </header>
 
         <main className="main-stack grid">
-          <section aria-label="Research highlights" className="metric-strip grid gap-3 md:grid-cols-3">
+          <section aria-label="Research highlights" className="metric-strip grid gap-3 md:grid-cols-4">
             {currentHighlights.map((highlight, index) => (
               <article key={highlight.label} className="metric-card">
                 <p className="font-mono text-xs text-muted tabular-nums">0{index + 1}</p>
