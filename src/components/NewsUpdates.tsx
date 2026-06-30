@@ -31,6 +31,7 @@ function NewsUpdates({ items }: { items: NewsUpdate[] }) {
 
       const select = gsap.utils.selector(root)
       const cards = select('.news-card')
+      const certificate = select('.news-certificate')
       const liveDot = select('.news-live-dot')
       const scan = select('.news-scan')
       const mm = gsap.matchMedia()
@@ -41,8 +42,16 @@ function NewsUpdates({ items }: { items: NewsUpdate[] }) {
         if (cards.length) {
           gsap.fromTo(
             cards,
-            { x: -10, autoAlpha: 0.42 },
-            { x: 0, autoAlpha: 1, duration: 0.55, stagger: 0.07, ease: 'power2.out', delay: 0.08 },
+            { x: -16, autoAlpha: 0.42 },
+            { x: 0, autoAlpha: 1, duration: 0.62, stagger: 0.07, ease: 'power2.out', delay: 0.08 },
+          )
+        }
+
+        if (certificate.length) {
+          gsap.fromTo(
+            certificate,
+            { autoAlpha: 0, rotate: -2.5, scale: 0.94, y: 10 },
+            { autoAlpha: 1, rotate: 0, scale: 1, y: 0, duration: 0.74, ease: 'back.out(1.4)', delay: 0.18 },
           )
         }
 
@@ -76,10 +85,10 @@ function NewsUpdates({ items }: { items: NewsUpdate[] }) {
       <div className="section-intro news-intro">
         <p className="text-[0.68rem] font-bold uppercase text-accent">News / Updates</p>
         <h2 id="news-title" className="mt-2 text-balance font-display text-3xl leading-[1] text-ink">
-          Reserved stream.
+          Award stream.
         </h2>
         <p className="mt-3 text-pretty text-xs leading-5 text-muted">
-          Paper accepts, releases, talks. Small by design.
+          Compact notes for paper accepts, releases, talks, and research awards.
         </p>
       </div>
 
@@ -93,7 +102,7 @@ function NewsUpdates({ items }: { items: NewsUpdate[] }) {
           </div>
           <span className="news-live-badge">
             <span className="news-live-dot" aria-hidden="true" />
-            standby
+            live
           </span>
         </div>
 
@@ -118,6 +127,9 @@ function NewsUpdates({ items }: { items: NewsUpdate[] }) {
                     <span className="news-tag">{item.kind ?? 'note'}</span>
                     <h3 className="news-item-title">{item.title}</h3>
                     {item.detail ? <p className="news-item-detail">{item.detail}</p> : null}
+                    {item.image ? (
+                      <img className="news-certificate" src={item.image.src} alt={item.image.alt} loading="lazy" />
+                    ) : null}
                   </div>
                 </a>
               ) : (
@@ -127,6 +139,9 @@ function NewsUpdates({ items }: { items: NewsUpdate[] }) {
                     <span className="news-tag">{item.kind ?? 'note'}</span>
                     <h3 className="news-item-title">{item.title}</h3>
                     {item.detail ? <p className="news-item-detail">{item.detail}</p> : null}
+                    {item.image ? (
+                      <img className="news-certificate" src={item.image.src} alt={item.image.alt} loading="lazy" />
+                    ) : null}
                   </div>
                 </article>
               ),

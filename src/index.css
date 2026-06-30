@@ -687,7 +687,7 @@ footer > * {
   margin-top: 0.18rem;
   color: var(--color-ink);
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1;
 }
 
@@ -703,7 +703,7 @@ footer > * {
 
 .news-scroll {
   position: relative;
-  max-height: 9rem;
+  max-height: 16rem;
   overflow-y: auto;
   overscroll-behavior: contain;
   padding-right: 0;
@@ -725,12 +725,12 @@ footer > * {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: 4.25rem minmax(0, 1fr);
+  grid-template-columns: 5rem minmax(0, 1fr);
   gap: 0.75rem;
   border: 0;
   border-bottom: 1px solid var(--rule-soft);
   background: transparent;
-  padding: 0.58rem 0.76rem;
+  padding: 0.7rem 0.76rem;
   box-shadow: none;
 }
 
@@ -759,7 +759,7 @@ footer > * {
 .news-date {
   color: var(--color-muted);
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: 0.58rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -769,7 +769,7 @@ footer > * {
   margin-top: 0.38rem;
   color: var(--color-ink);
   font-family: var(--font-display);
-  font-size: 0.98rem;
+  font-size: clamp(1.05rem, 1.45vw, 1.32rem);
   line-height: 1.06;
   text-wrap: balance;
 }
@@ -777,8 +777,18 @@ footer > * {
 .news-item-detail {
   margin-top: 0.24rem;
   color: var(--color-muted);
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   line-height: 1.45;
+}
+
+.news-certificate {
+  display: block;
+  width: min(100%, 10.5rem);
+  margin-top: 0.72rem;
+  border: 1px solid var(--rule);
+  background: white;
+  box-shadow: 0.45rem 0.45rem 0 rgb(17 20 25 / 0.08);
+  transform-origin: 50% 20%;
 }
 
 .project-stage {
