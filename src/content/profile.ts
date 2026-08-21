@@ -152,9 +152,9 @@ export const experience = [
     period: '2024.05 — 2024.12',
     location: 'Beijing',
     bullets: [
-      'Engineered AIGC image-model integration for mobile creation workflows in Douyin and Qingyan, connecting inference, pre/post-processing, asset configuration, visual validation, and cross-device debugging.',
-      'Designed a unified protocol and workflow packaging layer for heterogeneous models and assets, standardizing model, operator, parameter, and resource orchestration to reduce repeated integration work.',
-      'Shipped dozens of real-time effects with Shader and Lua and contributed to ECS, RTTI, and ContentPipeline engine modules, focusing on rendering consistency, resource loading, runtime performance, and device compatibility.',
+      'Built inference pipelines for AIGC image-generation and editing models in Douyin and Qingyan, covering model integration, pre/post-processing, operator adaptation, numerical alignment, and visual-quality validation.',
+      'Profiled and optimized production inference across end-to-end latency, throughput, peak memory, model loading, and redundant computation using batching, cache reuse, and tiered fallback strategies.',
+      'Designed a unified multi-model inference protocol and workflow orchestration framework with standardized resource loading, heterogeneous model composition, failure fallback, and reuse across applications.',
     ],
   },
 ]
