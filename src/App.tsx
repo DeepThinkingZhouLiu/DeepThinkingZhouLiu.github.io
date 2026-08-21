@@ -11,6 +11,7 @@ import {
   profile,
   preprints,
   projects,
+  publicationIndexes,
   selectedPapers,
 } from './content/profile'
 import NewsUpdates from './components/NewsUpdates'
@@ -24,7 +25,7 @@ const navItems = [
 ]
 
 const researchSignals = ['agents', 'post-training', 'multimodal', 'evaluation']
-const kineticSignals = ['ACL Main Oral', 'CVPR 2026', 'CCF-A', 'RL agents', 'arXiv preprint', 'tool use']
+const kineticSignals = ['EMNLP 2026', 'ExRole', 'SkillLens', 'ACL Main Oral', 'CCF-A', 'RL agents']
 const hitsDashboardUrl = 'https://hits.sh/deepthinkingzhouliu.github.io/'
 const hitsBadgeUrl =
   'https://hits.sh/deepthinkingzhouliu.github.io.svg?style=flat-square&label=page%20views&color=c5522f&labelColor=14171c'
@@ -440,13 +441,13 @@ function App() {
           <section id="papers" className="section-shell">
             <SectionIntro
               eyebrow="Publications"
-              title="Accepted work first. Preprints separate."
-              body="Conference, CCF tier, authorship, project-lead status, and oral markers are split into explicit tags for fast scanning."
+              title="Selected work. First and co-first only."
+              body="The homepage stays intentionally selective: lead-author work is shown here, while the complete publication record lives in external indexes."
             />
             <div className="publication-board">
               <div>
                 <div className="paper-group-heading">
-                  <span>Accepted papers</span>
+                  <span>Selected accepted papers</span>
                   <span>{selectedPapers.length} items</span>
                 </div>
                 <div className="paper-list" aria-label="Scrollable accepted paper list">
@@ -480,8 +481,8 @@ function App() {
 
               <div>
                 <div className="paper-group-heading">
-                  <span>Preprints</span>
-                  <span>{preprints.length} item</span>
+                  <span>Selected preprints</span>
+                  <span>{preprints.length} items</span>
                 </div>
                 <div className="preprint-list" aria-label="Preprint list">
                   {preprints.map((paper) => (
@@ -503,6 +504,19 @@ function App() {
                     </a>
                   ))}
                 </div>
+              </div>
+            </div>
+            <div className="publication-record">
+              <p>
+                <span>Full publication record</span>
+                Co-authored work stays off the homepage to keep the signal clear.
+              </p>
+              <div className="publication-record-links">
+                {publicationIndexes.map((index) => (
+                  <a key={index.label} href={index.href} target="_blank" rel="noreferrer">
+                    {index.label} ↗
+                  </a>
+                ))}
               </div>
             </div>
           </section>

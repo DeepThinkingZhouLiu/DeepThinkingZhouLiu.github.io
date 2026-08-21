@@ -20,7 +20,7 @@ export const profile = {
 
 export const currentHighlights = [
   {
-    value: '05',
+    value: '07',
     label: 'first or co-first CCF-A papers already accepted in the current cycle',
   },
   {
@@ -46,6 +46,22 @@ export const focusAreas = [
 ]
 
 export const selectedPapers = [
+  {
+    title: 'Source-Grounded Semantic Reinforcement Learning for Low-Resource Target-Language Generation',
+    role: 'Co-first author',
+    venue: 'EMNLP 2026 Main Conference',
+    ccf: 'CCF-A',
+    distinction: 'Accepted',
+    projectLead: false,
+  },
+  {
+    title: 'DataCross: A Unified Benchmark and Agent Framework for Cross-Modal Heterogeneous Data Analysis',
+    role: 'Co-first author',
+    venue: 'EMNLP 2026 Findings',
+    ccf: 'CCF-A',
+    distinction: 'Accepted',
+    projectLead: false,
+  },
   {
     title: 'UniDataBench: Evaluating Data Analytics Agents Across Structured and Unstructured Data',
     role: 'Co-first author',
@@ -86,24 +102,35 @@ export const selectedPapers = [
     distinction: 'Accepted',
     projectLead: false,
   },
-  {
-    title: 'LongInsightBench: A Comprehensive Benchmark for Evaluating Omni-Modal Models on Human-Centric Long-Video Understanding',
-    role: 'Fifth author',
-    venue: 'ACL 2026 Findings',
-    ccf: 'CCF-A',
-    distinction: 'Accepted',
-    projectLead: false,
-  },
 ]
 
 export const preprints = [
   {
-    title: 'TRACER: Turn-level Regret Matching with Inner Reinforcement Credit for Cooperative Multi-LLM Reasoning',
-    role: 'Co-author',
+    title: 'ExRole: From Team Trajectories to Executable Roles in Multi-Agent Language Models',
+    role: 'First author',
     venue: 'arXiv 2026',
     ccf: 'Preprint',
-    distinction: 'Submitted 2026.05',
-    href: 'https://arxiv.org/abs/2605.28699',
+    distinction: '2026.08',
+    href: 'https://arxiv.org/abs/2608.11949',
+  },
+  {
+    title: 'SkillLens: Visual Skill Cards for Retrieval-Augmented GUI Action Prediction and On-Policy Distillation',
+    role: 'First author',
+    venue: 'arXiv 2026',
+    ccf: 'Preprint',
+    distinction: '2026.08',
+    href: 'https://arxiv.org/abs/2608.10775',
+  },
+]
+
+export const publicationIndexes = [
+  {
+    label: 'ACL Anthology',
+    href: 'https://aclanthology.org/people/zhou-liu/',
+  },
+  {
+    label: 'Google Scholar',
+    href: 'https://scholar.google.com/scholar?q=Zhou+Liu+UniDataBench',
   },
 ]
 
