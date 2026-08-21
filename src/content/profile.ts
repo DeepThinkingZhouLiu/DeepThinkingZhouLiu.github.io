@@ -152,9 +152,9 @@ export const experience = [
     period: '2024.05 — 2024.12',
     location: 'Beijing',
     bullets: [
-      'Integrated AIGC models into consumer apps such as Douyin and Qingyan, improving delivery efficiency and asset reuse.',
-      'Unified heterogeneous model assets under a shared protocol and accelerated workflow package execution.',
-      'Built dozens of visual effects with Shader and Lua while collaborating on rendering-engine subsystems.',
+      'Engineered AIGC image-model integration for mobile creation workflows in Douyin and Qingyan, connecting inference, pre/post-processing, asset configuration, visual validation, and cross-device debugging.',
+      'Designed a unified protocol and workflow packaging layer for heterogeneous models and assets, standardizing model, operator, parameter, and resource orchestration to reduce repeated integration work.',
+      'Shipped dozens of real-time effects with Shader and Lua and contributed to ECS, RTTI, and ContentPipeline engine modules, focusing on rendering consistency, resource loading, runtime performance, and device compatibility.',
     ],
   },
 ]
