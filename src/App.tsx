@@ -1,5 +1,6 @@
 import NewsUpdates from './components/NewsUpdates'
 import { newsUpdates } from './content/news'
+import type { PublicationLink } from './content/profile'
 import {
   contactLinks,
   currentHighlights,
@@ -144,6 +145,7 @@ function App() {
                         <span>{paper.distinction}</span>
                       </div>
                       <h4>{paper.title}</h4>
+                      <PublicationLinks links={paper.links} title={paper.title} />
                     </article>
                   </li>
                 ))}
@@ -158,15 +160,15 @@ function App() {
               <ul className="preprint-list">
                 {preprints.map((paper) => (
                   <li key={paper.title}>
-                    <a href={paper.href} target="_blank" rel="noreferrer">
+                    <article>
                       <div className="publication-meta">
                         <strong>{paper.venue}</strong>
                         <span>{paper.role}</span>
                         <span>{paper.distinction}</span>
                       </div>
                       <h4>{paper.title}</h4>
-                      <small>View on arXiv →</small>
-                    </a>
+                      <PublicationLinks links={paper.links} title={paper.title} />
+                    </article>
                   </li>
                 ))}
               </ul>
@@ -249,6 +251,54 @@ function App() {
         </div>
       </footer>
     </div>
+  )
+}
+
+function PublicationLinks({ links, title }: { links: PublicationLink[]; title: string }) {
+  if (!links.length) {
+    return null
+  }
+
+  return (
+    <div className="publication-links" aria-label={`Resources for ${title}`}>
+      {links.map((link) => (
+        <a
+          key={`${link.kind}-${link.href}`}
+          href={link.href}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${link.label}: ${title}`}
+          title={link.label}
+        >
+          <ResourceIcon kind={link.kind} />
+          <span>{link.label}</span>
+        </a>
+      ))}
+    </div>
+  )
+}
+
+function ResourceIcon({ kind }: { kind: PublicationLink['kind'] }) {
+  if (kind === 'code') {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path
+          fill="currentColor"
+          d="M12 .8a11.4 11.4 0 0 0-3.6 22.2c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.4-4-1.4-.5-1.4-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.4 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.2 11.2 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.1v3.1c0 .3.2.7.8.6A11.4 11.4 0 0 0 12 .8Z"
+        />
+      </svg>
+    )
+  }
+
+  if (kind === 'dataset') {
+    return <span className="hugging-face-icon" aria-hidden="true">🤗</span>
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M6 2.75h7l5 5v13.5H6z" fill="none" stroke="currentColor" strokeWidth="1.7" />
+      <path d="M13 2.75v5h5M9.25 12l5.5 5m0-5-5.5 5" fill="none" stroke="currentColor" strokeWidth="1.7" />
+    </svg>
   )
 }
 

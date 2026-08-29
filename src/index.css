@@ -534,24 +534,46 @@ footer {
 
 .preprint-list > li {
   border-bottom: 1px solid var(--rule);
-}
-
-.preprint-list a {
-  display: block;
   padding-block: 1rem;
-  transition: color 140ms ease-out;
 }
 
-.preprint-list a:hover {
-  color: var(--accent);
+.publication-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+  margin-top: 0.72rem;
 }
 
-.preprint-list small {
-  display: inline-block;
-  margin-top: 0.55rem;
-  color: var(--accent);
-  font-size: 0.68rem;
+.publication-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid var(--rule-strong);
+  padding: 0.3rem 0.48rem;
+  color: var(--muted);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.58rem;
   font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: border-color 140ms ease-out, color 140ms ease-out, background 140ms ease-out;
+}
+
+.publication-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.publication-links svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  flex: 0 0 auto;
+}
+
+.hugging-face-icon {
+  font-size: 0.92rem;
+  line-height: 1;
 }
 
 .experience-list,

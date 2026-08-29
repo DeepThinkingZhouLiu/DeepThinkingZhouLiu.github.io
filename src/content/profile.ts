@@ -18,10 +18,16 @@ export const profile = {
   location: 'Beijing, China',
 }
 
+export type PublicationLink = {
+  kind: 'paper' | 'code' | 'dataset'
+  href: string
+  label: string
+}
+
 export const currentHighlights = [
   {
     value: '07',
-    label: 'first or co-first CCF-A papers already accepted in the current cycle',
+    label: 'first or co-first papers accepted across ACL, CVPR, and EMNLP 2026',
   },
   {
     value: 'Top 5%',
@@ -50,17 +56,23 @@ export const selectedPapers = [
     title: 'Source-Grounded Semantic Reinforcement Learning for Low-Resource Target-Language Generation',
     role: 'Co-first author',
     venue: 'EMNLP 2026 Main Conference',
-    ccf: 'CCF-A',
+    ccf: 'CCF-B',
     distinction: 'Accepted',
     projectLead: false,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2605.29502', label: 'arXiv' },
+    ] satisfies PublicationLink[],
   },
   {
     title: 'DataCross: A Unified Benchmark and Agent Framework for Cross-Modal Heterogeneous Data Analysis',
     role: 'Co-first author',
     venue: 'EMNLP 2026 Findings',
-    ccf: 'CCF-A',
+    ccf: 'CCF-B',
     distinction: 'Accepted',
     projectLead: false,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2601.21403', label: 'arXiv' },
+    ] satisfies PublicationLink[],
   },
   {
     title: 'UniDataBench: Evaluating Data Analytics Agents Across Structured and Unstructured Data',
@@ -69,6 +81,9 @@ export const selectedPapers = [
     ccf: 'CCF-A',
     distinction: 'Oral · Top 5%',
     projectLead: true,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2511.01625', label: 'arXiv' },
+    ] satisfies PublicationLink[],
   },
   {
     title: 'Paper2SysArch: Structure-Constrained System Architecture Generation from Scientific Papers',
@@ -77,6 +92,10 @@ export const selectedPapers = [
     ccf: 'CCF-A',
     distinction: 'Accepted',
     projectLead: true,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2511.18036', label: 'arXiv' },
+      { kind: 'code', href: 'https://github.com/OpenDCAI/Paper2Any', label: 'Code' },
+    ] satisfies PublicationLink[],
   },
   {
     title: 'InsightBenchMaker: Towards Generating Evolving and High-Fidelity Benchmarks for Data-Analysis Agents',
@@ -85,14 +104,19 @@ export const selectedPapers = [
     ccf: 'CCF-A',
     distinction: 'Accepted',
     projectLead: true,
+    links: [] satisfies PublicationLink[],
   },
   {
-    title: 'SciFlow: Evaluating Structure-Aware Scientific Diagram Generation via Inverse Parsing',
+    title: 'SciFlow-Bench: Evaluating Structure-Aware Scientific Diagram Generation via Inverse Parsing',
     role: 'Co-first author',
     venue: 'ACL 2026 Main Conference',
     ccf: 'CCF-A',
     distinction: 'Accepted',
     projectLead: true,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2602.09809', label: 'arXiv' },
+      { kind: 'code', href: 'https://github.com/Tong-0302/SciFlow-Bench', label: 'Code' },
+    ] satisfies PublicationLink[],
   },
   {
     title: 'Reinforcement Learning with Semantic Rewards Enables Low-Resource Language Expansion without Alignment Tax',
@@ -101,6 +125,9 @@ export const selectedPapers = [
     ccf: 'CCF-A',
     distinction: 'Accepted',
     projectLead: false,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2605.14366', label: 'arXiv' },
+    ] satisfies PublicationLink[],
   },
 ]
 
@@ -111,7 +138,9 @@ export const preprints = [
     venue: 'arXiv 2026',
     ccf: 'Preprint',
     distinction: '2026.08',
-    href: 'https://arxiv.org/abs/2608.11949',
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2608.11949', label: 'arXiv' },
+    ] satisfies PublicationLink[],
   },
   {
     title: 'SkillLens: Visual Skill Cards for Retrieval-Augmented GUI Action Prediction and On-Policy Distillation',
@@ -119,7 +148,9 @@ export const preprints = [
     venue: 'arXiv 2026',
     ccf: 'Preprint',
     distinction: '2026.08',
-    href: 'https://arxiv.org/abs/2608.10775',
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2608.10775', label: 'arXiv' },
+    ] satisfies PublicationLink[],
   },
 ]
 
