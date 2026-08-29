@@ -198,7 +198,7 @@ export const projects = [
     stack: 'TypeScript · LaTeX · AI workspace',
     stars: '299 stars',
     href: 'https://github.com/OpenDCAI/OpenPrism',
-    icon: '/project-icons/openprism.gif',
+    icon: '/project-icons/openprism-icon.webp',
     summary:
       'An AI-powered academic writing workspace with LaTeX editing, PDF preview, compilation flow, and research assistance for paper production.',
   },
@@ -207,7 +207,7 @@ export const projects = [
     stack: 'Python · TypeScript',
     stars: '2.5k stars',
     href: 'https://github.com/OpenDCAI/Paper2Any',
-    icon: '/project-icons/paper2any.png',
+    icon: '/project-icons/paper2any-icon.webp',
     summary:
       'Turns paper PDFs, screenshots, and text into editable architecture diagrams, technical roadmaps, plots, posters, and slide decks.',
   },
@@ -216,7 +216,7 @@ export const projects = [
     stack: 'Python',
     stars: '59 stars',
     href: 'https://github.com/OpenDCAI/DataFlow-Agent',
-    icon: '/project-icons/dataflow-agent.png',
+    icon: '/project-icons/dataflow-agent-icon.webp',
     summary:
       'A dynamic pipeline recommendation system and general-purpose agent framework for complex data analytics workflows.',
   },
@@ -225,7 +225,7 @@ export const projects = [
     stack: 'Python',
     stars: '4.3k stars',
     href: 'https://github.com/OpenDCAI/DataFlow',
-    icon: '/project-icons/dataflow.png',
+    icon: '/project-icons/dataflow-icon.webp',
     summary:
       'Data preparation, retrieval augmentation, and evaluation-oriented pipelines for domain-specific data workflows.',
   },
