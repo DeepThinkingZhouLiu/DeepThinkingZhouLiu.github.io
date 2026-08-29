@@ -168,6 +168,7 @@ export const publicationIndexes = [
 export const experience = [
   {
     org: 'ByteDance Volcano Engine · Data Model Team',
+    icon: '/brand/bytedance-icon.svg',
     role: 'Algorithm Intern',
     period: '2025.07 — Present',
     location: 'Beijing',
@@ -179,6 +180,7 @@ export const experience = [
   },
   {
     org: 'ByteDance Douyin Intelligent Creation Team',
+    icon: '/brand/bytedance-icon.svg',
     role: 'Graphics and Vision Algorithm Intern',
     period: '2024.05 — 2024.12',
     location: 'Beijing',

@@ -184,7 +184,9 @@ function App() {
           <div className="project-list">
             {projects.map((project) => (
               <a key={project.name} href={project.href} target="_blank" rel="noreferrer" className="project-item">
-                <img src={project.icon} alt="" loading="lazy" />
+                <span className="project-icon" aria-hidden="true">
+                  <img src={project.icon} alt="" loading="lazy" />
+                </span>
                 <div>
                   <div className="project-meta">
                     <span>{project.stack}</span>
@@ -216,7 +218,10 @@ function App() {
                   <span>{item.location}</span>
                 </div>
                 <div>
-                  <h3>{item.org}</h3>
+                  <div className="experience-title">
+                    <img src={item.icon} alt="" aria-hidden="true" />
+                    <h3>{item.org}</h3>
+                  </div>
                   <p className="experience-role">{item.role}</p>
                   <ul>
                     {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
