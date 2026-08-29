@@ -14,10 +14,10 @@ import {
 } from './content/profile'
 
 const navItems = [
-  { label: 'News', href: '#news' },
   { label: 'Publications', href: '#papers' },
-  { label: 'Experience', href: '#work' },
   { label: 'Projects', href: '#projects' },
+  { label: 'News', href: '#news' },
+  { label: 'Experience', href: '#work' },
   { label: 'Contact', href: '#contact' },
 ]
 
@@ -116,8 +116,6 @@ function App() {
           ))}
         </section>
 
-        <NewsUpdates items={newsUpdates} />
-
         <section id="papers" className="academic-section" aria-labelledby="papers-title">
           <SectionHeading
             kicker="Research"
@@ -176,6 +174,33 @@ function App() {
           </div>
         </section>
 
+        <section id="projects" className="academic-section" aria-labelledby="projects-title">
+          <SectionHeading
+            kicker="Open source"
+            title="Selected projects"
+            id="projects-title"
+            body="Research systems and open-source tools that connect papers, data, and reproducible workflows."
+          />
+          <div className="project-list">
+            {projects.map((project) => (
+              <a key={project.name} href={project.href} target="_blank" rel="noreferrer" className="project-item">
+                <img src={project.icon} alt="" loading="lazy" />
+                <div>
+                  <div className="project-meta">
+                    <span>{project.stack}</span>
+                    <strong>★ {project.stars}</strong>
+                  </div>
+                  <h3>{project.name}</h3>
+                  <p>{project.summary}</p>
+                </div>
+                <span className="project-arrow" aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <NewsUpdates items={newsUpdates} />
+
         <section id="work" className="academic-section" aria-labelledby="work-title">
           <SectionHeading
             kicker="Background"
@@ -198,31 +223,6 @@ function App() {
                   </ul>
                 </div>
               </article>
-            ))}
-          </div>
-        </section>
-
-        <section id="projects" className="academic-section" aria-labelledby="projects-title">
-          <SectionHeading
-            kicker="Open source"
-            title="Selected projects"
-            id="projects-title"
-            body="Research systems and open-source tools that connect papers, data, and reproducible workflows."
-          />
-          <div className="project-list">
-            {projects.map((project) => (
-              <a key={project.name} href={project.href} target="_blank" rel="noreferrer" className="project-item">
-                <img src={project.icon} alt="" loading="lazy" />
-                <div>
-                  <div className="project-meta">
-                    <span>{project.stack}</span>
-                    <strong>★ {project.stars}</strong>
-                  </div>
-                  <h3>{project.name}</h3>
-                  <p>{project.summary}</p>
-                </div>
-                <span className="project-arrow" aria-hidden="true">↗</span>
-              </a>
             ))}
           </div>
         </section>
