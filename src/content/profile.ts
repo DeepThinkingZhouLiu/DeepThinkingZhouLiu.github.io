@@ -212,15 +212,6 @@ export const projects = [
       'Turns paper PDFs, screenshots, and text into editable architecture diagrams, technical roadmaps, plots, posters, and slide decks.',
   },
   {
-    name: 'OpenDCAI / Flow Agent',
-    stack: 'Python',
-    stars: '59 stars',
-    href: 'https://github.com/OpenDCAI/DataFlow-Agent',
-    icon: '/project-icons/dataflow-agent-icon.webp',
-    summary:
-      'A dynamic pipeline recommendation system and general-purpose agent framework for complex data analytics workflows.',
-  },
-  {
     name: 'OpenDCAI / DataFlow',
     stack: 'Python',
     stars: '4.3k stars',
