@@ -14,9 +14,9 @@ import {
 } from './content/profile'
 
 const navItems = [
+  { label: 'News', href: '#news' },
   { label: 'Publications', href: '#papers' },
   { label: 'Projects', href: '#projects' },
-  { label: 'News', href: '#news' },
   { label: 'Experience', href: '#work' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -116,6 +116,8 @@ function App() {
           ))}
         </section>
 
+        <NewsUpdates items={newsUpdates} />
+
         <section id="papers" className="academic-section" aria-labelledby="papers-title">
           <SectionHeading
             kicker="Research"
@@ -200,8 +202,6 @@ function App() {
             ))}
           </div>
         </section>
-
-        <NewsUpdates items={newsUpdates} />
 
         <section id="work" className="academic-section" aria-labelledby="work-title">
           <SectionHeading
