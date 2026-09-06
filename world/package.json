@@ -12,7 +12,7 @@
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "format": "prettier --write .",
     "build": "astro check && astro build",
-    "preview": "astro preview --host 0.0.0.0"
+    "preview": "vite preview --config preview.config.ts"
   },
   "dependencies": {
     "@fontsource/dm-sans": "^5.2.8",
@@ -25,6 +25,7 @@
     "@types/three": "^0.183.1",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "~6.0.2"
+    "typescript": "~6.0.2",
+    "vite": "^8.2.2"
   }
 }

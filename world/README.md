@@ -38,7 +38,9 @@ npm run build
 npm run preview -- --port 4322
 ```
 
-生产构建预览：`http://localhost:4322/world/`。不要直接双击 `dist/index.html`，模块和字体需要 HTTP 服务及正确的 `/world/` 路径。
+生产构建预览：`http://localhost:4322/`，会自动跳转到 `/world/`；直接打开 `/world` 或 `/world/` 也可以。预览使用 Vite 的静态文件服务，避免 Astro 在根路径展示 base-path 404；构建仍由 Astro 完成。端口占用时会明确报错，不会悄悄换端口。
+
+如果在远程服务器运行，浏览器中的 `127.0.0.1` 指的是你自己电脑。需要先把服务器的 `4322` 端口转发到本机，再打开上述地址。不要直接双击 `dist/index.html`，模块和字体需要 HTTP 服务及正确的 `/world/` 路径。
 
 **GitHub Pages**
 
