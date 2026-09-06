@@ -1,0 +1,198 @@
+---
+import {
+  profile,
+  selectedPapers,
+  preprints,
+  projects,
+  focusAreas,
+  contactLinks,
+  publicationIndexes,
+} from '../../../src/content/profile';
+import { newsUpdates } from '../../../src/content/news';
+---
+
+<div class="reading-room" id="reading-room">
+  <div class="reading-intro">
+    <p class="eyebrow">The reading room</p><h2>
+      All the substance. No navigation required.
+    </h2><p>The same research, in an accessible text view.</p>
+  </div>
+  <section
+    id="content-about"
+    data-content="about"
+    aria-labelledby="title-about"
+  >
+    <p class="eyebrow">01 / The researcher</p><h2 id="title-about">
+      Hello, I'm {profile.name}.
+    </h2>
+    <p class="lead">{profile.summary}</p>
+    <p>
+      Advised by <a href={profile.advisor.href} target="_blank" rel="noreferrer"
+        >{profile.advisor.name} ↗</a
+      > at Peking University.
+    </p>
+    <h3>Questions I'm exploring</h3><ul class="focus-list">
+      {focusAreas.map((area) => <li>{area}</li>)}
+    </ul>
+    <p class="collaboration">{profile.collaboration}</p>
+  </section>
+  <section id="content-news" data-content="news" aria-labelledby="title-news">
+    <p class="eyebrow">02 / The noticeboard</p><h2 id="title-news">
+      Good things, lately.
+    </h2>
+    <div class="entries">
+      {
+        newsUpdates.map((news) => (
+          <article>
+            <>
+              <div class="entry-meta">
+                <>
+                  <time>{news.date}</time>
+                  <span>{news.kind}</span>
+                </>
+              </div>
+              <h3>{news.title}</h3>
+              <p>{news.detail}</p>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section
+    id="content-papers"
+    data-content="papers"
+    aria-labelledby="title-papers"
+  >
+    <p class="eyebrow">03 / The bookshelf</p><h2 id="title-papers">
+      Ideas, put to paper.
+    </h2>
+    <p>
+      Selected first- and co-first-author publications. Conference labels and
+      links match the classic homepage.
+    </p>
+    <div class="entries">
+      {
+        selectedPapers.map((paper, i) => (
+          <article>
+            <>
+              <div class="entry-meta">
+                <>
+                  <span>
+                    {String(i + 1).padStart(2, '0')} / {paper.venue}
+                  </span>
+                  <span>{paper.ccf}</span>
+                </>
+              </div>
+              <h3>{paper.title}</h3>
+              <p class="paper-role">
+                {paper.role}
+                {paper.distinction.includes('Oral') &&
+                  ` · ${paper.distinction}`}
+              </p>
+              <div class="entry-links">
+                {paper.links.map((link) => (
+                  <a href={link.href} target="_blank" rel="noreferrer">
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            </>
+          </article>
+        ))
+      }
+    </div>
+    <h3 class="subheading">On the workbench / Preprints</h3><div
+      class="entries"
+    >
+      {
+        preprints.map((paper) => (
+          <article>
+            <>
+              <div class="entry-meta">
+                <>
+                  <span>{paper.venue}</span>
+                  <span>Preprint</span>
+                </>
+              </div>
+              <h3>{paper.title}</h3>
+              <div class="entry-links">
+                {paper.links.map((link) => (
+                  <a href={link.href} target="_blank" rel="noreferrer">
+                    {link.label} ↗
+                  </a>
+                ))}
+              </div>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section
+    id="content-projects"
+    data-content="projects"
+    aria-labelledby="title-projects"
+  >
+    <p class="eyebrow">04 / The workbench</p><h2 id="title-projects">
+      Built in the open.
+    </h2>
+    <p>Tools that take research beyond the page.</p><div class="entries">
+      {
+        projects.map((project) => (
+          <article>
+            <>
+              <div class="entry-meta">
+                <>
+                  <span>{project.stack}</span>
+                  <span>Open source</span>
+                </>
+              </div>
+              <h3>
+                <img
+                  src={`https://deepthinkingzhouliu.github.io${project.icon}`}
+                  alt=""
+                  width="28"
+                  height="28"
+                  loading="lazy"
+                />
+                {project.name}
+              </h3>
+              <p>{project.summary}</p>
+              <a href={project.href} target="_blank" rel="noreferrer">
+                Explore on GitHub ↗
+              </a>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section
+    id="content-contact"
+    data-content="contact"
+    aria-labelledby="title-contact"
+  >
+    <p class="eyebrow">05 / The conversation corner</p><h2 id="title-contact">
+      Pull up a chair.
+    </h2><p class="lead">{profile.collaboration}</p><p>
+      Have a question, a shared research interest, or an idea worth trying?
+      Let's talk.
+    </p>
+    <div class="contact-links">
+      {
+        [...contactLinks, ...publicationIndexes].map((link) => (
+          <a
+            href={link.href}
+            target={link.href.startsWith('mailto:') ? undefined : '_blank'}
+            rel="noreferrer"
+          >
+            {link.label}
+            <span>↗</span>
+          </a>
+        ))
+      }
+    </div>
+    <p class="quiet">Beijing, China / Peking University</p>
+  </section>
+</div>

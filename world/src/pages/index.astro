@@ -1,0 +1,210 @@
+---
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/500.css';
+import '@fontsource/dm-sans/600.css';
+import '@fontsource/instrument-serif/400.css';
+import '@fontsource/instrument-serif/400-italic.css';
+import '../styles/world.css';
+import RoomContent from '../components/RoomContent.astro';
+const stations = [
+  { id: 'about', number: '01', name: 'About', x: '21%', y: '41%' },
+  { id: 'news', number: '02', name: 'News', x: '60%', y: '30%' },
+  { id: 'papers', number: '03', name: 'Papers', x: '30%', y: '55%' },
+  { id: 'projects', number: '04', name: 'Projects', x: '64%', y: '53%' },
+  { id: 'contact', number: '05', name: 'Contact', x: '76%', y: '70%' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" /><meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <meta name="theme-color" content="#f2efe6" />
+    <title>Zhou's Research Room | An Interactive Academic World</title>
+    <meta
+      name="description"
+      content="Step inside Zhou Liu's research room. Explore papers, open-source projects, and research news in an interactive Three.js world. PhD student at Peking University."
+    />
+    <link rel="canonical" href="https://deepthinkingzhouliu.github.io/world/" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='8' fill='%23243735'/%3E%3Ctext x='10' y='29' fill='%23f2efe6' font-size='28' font-family='serif'%3Ez%3C/text%3E%3C/svg%3E"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#reading-room">Skip to research content</a>
+    <header class="masthead">
+      <a
+        class="wordmark"
+        href="https://deepthinkingzhouliu.github.io/"
+        aria-label="Zhou Liu, classic homepage"
+        ><span class="monogram">zl.</span><span
+          >Zhou Liu<span class="wordmark-sub">Peking University</span></span
+        ></a
+      ><div class="edition">
+        <span class="status-dot"></span> A living research room <span
+          class="edition-number">/ EXP. 001</span
+        >
+      </div><a
+        class="classic-link"
+        href="https://deepthinkingzhouliu.github.io/"
+        >Classic homepage <span>↗</span></a
+      >
+    </header>
+    <main>
+      <section class="world-shell" aria-label="Interactive research room">
+        <div class="intro">
+          <p class="eyebrow">Research, with a little room to play.</p><h1>
+            Big questions.<br /><em>A small world.</em>
+          </h1><p class="intro-copy">
+            I'm Zhou, a PhD student at PKU.<br />I build agents that help us
+            discover.<br />Make yourself at home.
+          </p><a class="latest" href="#content-news" data-open="news"
+            ><span class="latest-tag">LATEST / AUG 2026</span><span
+              >4 papers at EMNLP 2026 <span class="arrow">↗</span></span
+            ></a
+          >
+        </div>
+        <div
+          id="scene"
+          class="scene"
+          role="group"
+          aria-label="3D research studio. Drag to orbit, scroll to zoom. Focus the room and use W A S D or arrow keys to move the robot. Use the numbered buttons to read content."
+          tabindex="0"
+        >
+          <div class="loading" id="loading">
+            <span class="loading-cube"></span><span>Opening the studio...</span>
+          </div>
+          <div id="hotspots" class="hotspots" aria-label="Places in the room">
+            {
+              stations.map((station) => (
+                <a
+                  class="hotspot"
+                  href={`#content-${station.id}`}
+                  data-open={station.id}
+                  data-hotspot={station.id}
+                  style={`left:${station.x};top:${station.y}`}
+                >
+                  <>
+                    <span class="hotspot-number">{station.number}</span>
+                    <span class="hotspot-label">{station.name}</span>
+                  </>
+                </a>
+              ))
+            }
+          </div>
+          <p id="fallback" class="fallback" hidden>
+            The 3D room could not start on this device. All research is still
+            available below.<a href="#reading-room">Enter the reading room ↓</a>
+          </p>
+        </div>
+        <div class="scene-caption">
+          <span class="caption-line"></span> THE RESEARCH STUDIO <span
+            class="quiet">/ Beijing, Earth</span
+          >
+        </div>
+        <div class="room-tools">
+          <button
+            id="theme-toggle"
+            type="button"
+            aria-pressed="false"
+            title="Switch between daylight and evening"
+            ><span aria-hidden="true">◐</span><span id="theme-label"
+              >Daylight</span
+            ></button
+          ><button id="reset-camera" type="button" title="Reset the camera view"
+            ><span aria-hidden="true">⤢</span> Reset view</button
+          >
+        </div>
+        <div class="walk-pad" aria-label="Move the robot">
+          <button data-move="up" aria-label="Walk forward">↑</button><button
+            data-move="left"
+            aria-label="Walk left">←</button
+          ><button data-move="down" aria-label="Walk backward">↓</button><button
+            data-move="right"
+            aria-label="Walk right">→</button
+          >
+        </div>
+        <div class="collect-note">
+          <span class="idea-dot"></span><span
+            id="collect-status"
+            role="status"
+            aria-live="polite">Find 3 sparks of inspiration</span
+          ><span id="collect-count">0 / 3</span><button
+            id="reset-walk"
+            type="button"
+            aria-label="Restart the robot and inspiration hunt"
+            title="Restart the walk">↺</button
+          >
+        </div>
+      </section>
+      <nav class="room-nav" aria-label="Explore the room">
+        <span class="nav-intro"
+          >TAKE A LOOK<br /><span>Every object has a story.</span></span
+        >{
+          stations.map((station) => (
+            <a href={`#content-${station.id}`} data-open={station.id}>
+              <>
+                <span class="nav-number">{station.number}</span>
+                <span>{station.name}</span>
+                <span class="nav-arrow">↗</span>
+              </>
+            </a>
+          ))
+        }
+      </nav>
+      <div class="footnote">
+        <p>
+          <span class="keyboard-hint"
+            >W A S D / arrows to wander <i>·</i>
+          </span>Drag to orbit <i>·</i> Scroll to zoom <i>·</i> Click a number to
+          explore
+        </p><a id="text-view" href="#reading-room"
+          >Prefer a quiet read? Text view ↓</a
+        >
+      </div>
+      <RoomContent />
+    </main>
+    <dialog id="detail-dialog" aria-label="Research room content">
+      <div class="dialog-top">
+        <span class="eyebrow">Zhou's research room</span><button
+          id="close-dialog"
+          aria-label="Close details"
+          >Close <span aria-hidden="true">×</span></button
+        >
+      </div><div id="dialog-content"></div><div class="dialog-bottom">
+        <span>Stay curious.</span><button id="return-room"
+          >Back to the room ↗</button
+        >
+      </div>
+    </dialog>
+    <noscript
+      ><style>
+        .loading,
+        .hotspots,
+        .room-tools,
+        .walk-pad,
+        .collect-note {
+          display: none;
+        }
+        .scene {
+          min-height: 200px;
+        }
+        .scene::after {
+          content: 'JavaScript is off. Browse the complete research archive below.';
+          position: absolute;
+          bottom: 25px;
+          left: 25px;
+        }
+      </style></noscript
+    >
+    <script>
+      import { startRoom } from '../scripts/app';
+      startRoom();
+    </script>
+  </body>
+</html>

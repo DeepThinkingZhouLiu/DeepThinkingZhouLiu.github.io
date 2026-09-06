@@ -1,0 +1,45 @@
+name: Check Research World Experiment
+
+on:
+  push:
+    branches: [experiment/research-world]
+  pull_request:
+    paths: [world/**, src/content/**, .github/workflows/world-preview.yml]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            world/package-lock.json
+      - name: Install classic site
+        run: npm ci
+      - name: Install research world
+        run: npm ci --prefix world
+      - name: Check source
+        run: npm run lint
+      - name: Test movement
+        run: npm test --prefix world
+      - name: Build classic homepage
+        run: npm run build
+      - name: Build research world
+        run: npm run build --prefix world
+      - name: Assemble independent world path
+        run: cp -R world/dist dist/world
+      - uses: actions/upload-artifact@v4
+        with:
+          name: academic-homepage-with-world
+          path: dist
+          retention-days: 14
+
+# 此实验只上传构建产物，不触发线上 Pages 部署。
