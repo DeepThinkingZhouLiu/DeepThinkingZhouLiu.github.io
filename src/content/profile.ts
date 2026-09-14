@@ -26,8 +26,8 @@ export type PublicationLink = {
 
 export const currentHighlights = [
   {
-    value: '07',
-    label: 'first or co-first papers accepted across ACL, CVPR, and EMNLP 2026',
+    value: '08',
+    label: 'first or co-first papers accepted across SIGMOD, ACL, CVPR, and EMNLP',
   },
   {
     value: 'Top 5%',
@@ -44,6 +44,7 @@ export const currentHighlights = [
 ]
 
 export const focusAreas = [
+  'Recursive self-improvement (RSI) of agent harnesses',
   'LLM post-training and alignment',
   'Agent planning, tool use, and trajectory verification',
   'Multimodal scientific intelligence',
@@ -52,6 +53,19 @@ export const focusAreas = [
 ]
 
 export const selectedPapers = [
+  {
+    title: 'DataFlow: An LLM-Driven Framework for Unified Data Preparation and Workflow Automation in the Era of Data-Centric AI',
+    role: 'Co-first author',
+    venue: 'SIGMOD 2027',
+    ccf: 'CCF-A',
+    distinction: 'Accepted',
+    projectLead: true,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2512.16676', label: 'arXiv' },
+      { kind: 'code', href: 'https://github.com/OpenDCAI/DataFlow', label: 'Code' },
+      { kind: 'dataset', href: 'https://huggingface.co/datasets/OpenDCAI/dataflow-instruct-10k', label: 'Dataset' },
+    ] satisfies PublicationLink[],
+  },
   {
     title: 'Source-Grounded Semantic Reinforcement Learning for Low-Resource Target-Language Generation',
     role: 'Co-first author',
@@ -167,6 +181,17 @@ export const publicationIndexes = [
 
 export const experience = [
   {
+    org: 'HarnessEvoGym · Recursive Self-Improvement (RSI)',
+    icon: '/project-icons/harnessevogym-icon.svg',
+    role: 'Open-source research contributor',
+    period: '2026 — Present',
+    location: 'Open source',
+    bullets: [
+      'Building an adapter-based, reproducible gym for recursive self-improvement of coding-agent harnesses, with explicit targets, environments, evolution recipes, and trust boundaries.',
+      'Implementing auditable controller loops for mutation leases, diff guards, evaluation, promotion, rollback, and lineage tracking across agent-harness experiments.',
+    ],
+  },
+  {
     org: 'ByteDance Volcano Engine · Data Model Team',
     icon: '/brand/bytedance-icon.svg',
     role: 'Algorithm Intern',
@@ -193,6 +218,15 @@ export const experience = [
 ]
 
 export const projects = [
+  {
+    name: 'RSI / HarnessEvoGym',
+    stack: 'TypeScript · Coding agents · RSI',
+    stars: '2 stars',
+    href: 'https://github.com/DeepThinkingZhouLiu/HarnessEvoGym',
+    icon: '/project-icons/harnessevogym-icon.svg',
+    summary:
+      'An adapter-based, reproducible gym for evolving coding-agent harnesses with isolated evaluation, promotion gates, rollback, and lineage tracking.',
+  },
   {
     name: 'OpenDCAI / OpenPrism',
     stack: 'TypeScript · LaTeX · AI workspace',
@@ -223,6 +257,18 @@ export const projects = [
 ]
 
 export const contactLinks = [
+  {
+    label: 'CV (English)',
+    href: '/cv/main_en.pdf',
+    primary: false,
+    external: true,
+  },
+  {
+    label: 'CV (中文)',
+    href: '/cv/main.pdf',
+    primary: false,
+    external: true,
+  },
   {
     label: 'Email',
     href: 'mailto:zhouliu.919@qq.com',

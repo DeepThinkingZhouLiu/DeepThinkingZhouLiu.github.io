@@ -10,6 +10,15 @@ export type NewsUpdate = {
 // 最新动态放在最前面，保持首页时间线易于浏览。
 export const newsUpdates: NewsUpdate[] = [
   {
+    date: 'Sep. 2026',
+    title: 'DataFlow accepted to SIGMOD 2027',
+    detail:
+      'DataFlow, an LLM-driven framework for unified data preparation and workflow automation, was accepted to SIGMOD 2027.',
+    count: '1 paper',
+    kind: 'Publication',
+    href: '#papers',
+  },
+  {
     date: 'Aug. 2026',
     title: 'Four papers accepted to EMNLP 2026',
     detail:
