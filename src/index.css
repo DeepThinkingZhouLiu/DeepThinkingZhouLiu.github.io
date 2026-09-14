@@ -695,6 +695,25 @@ footer {
   line-height: 1.55;
 }
 
+.project-details {
+  display: grid;
+  gap: 0.28rem;
+  max-width: 47rem;
+  margin: 0.62rem 0 0;
+  padding-left: 1rem;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.project-details li {
+  padding-left: 0.16rem;
+}
+
+.project-details li::marker {
+  color: var(--accent);
+}
+
 .project-arrow {
   align-self: center;
   color: var(--accent);

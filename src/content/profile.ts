@@ -220,12 +220,17 @@ export const experience = [
 export const projects = [
   {
     name: 'RSI / HarnessEvoGym',
-    stack: 'TypeScript · Coding agents · RSI',
+    stack: 'TypeScript · Coding agents · Docker · RSI',
     stars: '2 stars',
     href: 'https://github.com/DeepThinkingZhouLiu/HarnessEvoGym',
     icon: '/project-icons/harnessevogym-icon.svg',
     summary:
-      'An adapter-based, reproducible gym for evolving coding-agent harnesses with isolated evaluation, promotion gates, rollback, and lineage tracking.',
+      'A trusted and reproducible platform for recursive self-improvement of coding-agent harnesses. It turns self-editing into an inspectable experiment with explicit mutation scope, independent evaluation, and controlled promotion.',
+    details: [
+      'Decouples each experiment into Target × Environment × EvolutionRecipe, while a frozen Controller owns permissions, scheduling, evaluation, promotion, rollback, and lineage.',
+      'Uses MutationLease, semantic validation, and Diff Guard to prevent evaluator tampering, out-of-scope writes, hidden-task leakage, and promotion on noisy ties.',
+      'Supports five population topologies, modular search strategies, MSA Cowork/Reasoning targets, Codex CLI and DeepSeek Harness updaters, OmegaUse-OfficeVal, checkpoint resume, and sealed-final evaluation.',
+    ],
   },
   {
     name: 'OpenDCAI / OpenPrism',

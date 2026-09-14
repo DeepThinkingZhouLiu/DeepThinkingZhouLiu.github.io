@@ -196,6 +196,11 @@ function App() {
                   </div>
                   <h3>{project.name}</h3>
                   <p>{project.summary}</p>
+                  {project.details ? (
+                    <ul className="project-details">
+                      {project.details.map((detail) => <li key={detail}>{detail}</li>)}
+                    </ul>
+                  ) : null}
                 </div>
                 <span className="project-arrow" aria-hidden="true">↗</span>
               </a>
