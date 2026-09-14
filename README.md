@@ -52,3 +52,5 @@ The expected production URL is:
 ## Content Source
 
 The page content is adapted from local resume material and project metadata, but the deployed site does not expose a downloadable resume file.
+
+Keep CV PDFs and LaTeX sources in the separate local resume project. Do not copy them into this repository or its public/build directories, and do not add CV download links to the homepage.

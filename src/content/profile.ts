@@ -263,18 +263,6 @@ export const projects = [
 
 export const contactLinks = [
   {
-    label: 'CV (English)',
-    href: '/cv/main_en.pdf',
-    primary: false,
-    external: true,
-  },
-  {
-    label: 'CV (中文)',
-    href: '/cv/main.pdf',
-    primary: false,
-    external: true,
-  },
-  {
     label: 'Email',
     href: 'mailto:zhouliu.919@qq.com',
     primary: true,

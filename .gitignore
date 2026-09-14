@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# 简历仅在本地维护，不提交官网公开副本。
+/public/cv/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
