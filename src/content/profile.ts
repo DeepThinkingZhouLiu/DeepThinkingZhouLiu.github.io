@@ -27,7 +27,7 @@ export type PublicationLink = {
 export const currentHighlights = [
   {
     value: '08',
-    label: 'first or co-first papers accepted across SIGMOD, ACL, CVPR, and EMNLP',
+    label: 'first or co-first papers accepted across SIGMOD, ACL, CVPR, EMNLP, and NeurIPS',
   },
   {
     value: 'Top 5%',
@@ -67,28 +67,6 @@ export const selectedPapers = [
     ] satisfies PublicationLink[],
   },
   {
-    title: 'Source-Grounded Semantic Reinforcement Learning for Low-Resource Target-Language Generation',
-    role: 'Co-first author',
-    venue: 'EMNLP 2026 Main Conference',
-    ccf: 'CCF-B',
-    distinction: 'Accepted',
-    projectLead: false,
-    links: [
-      { kind: 'paper', href: 'https://arxiv.org/abs/2605.29502', label: 'arXiv' },
-    ] satisfies PublicationLink[],
-  },
-  {
-    title: 'DataCross: A Unified Benchmark and Agent Framework for Cross-Modal Heterogeneous Data Analysis',
-    role: 'Co-first author',
-    venue: 'EMNLP 2026 Findings',
-    ccf: 'CCF-B',
-    distinction: 'Accepted',
-    projectLead: false,
-    links: [
-      { kind: 'paper', href: 'https://arxiv.org/abs/2601.21403', label: 'arXiv' },
-    ] satisfies PublicationLink[],
-  },
-  {
     title: 'UniDataBench: Evaluating Data Analytics Agents Across Structured and Unstructured Data',
     role: 'Co-first author',
     venue: 'ACL 2026 Main Conference',
@@ -112,6 +90,38 @@ export const selectedPapers = [
     ] satisfies PublicationLink[],
   },
   {
+    title: 'SciFlow-Bench: Evaluating Structure-Aware Scientific Diagram Generation via Inverse Parsing',
+    role: 'Project leader',
+    venue: 'ACL 2026 Main Conference',
+    ccf: 'CCF-A',
+    distinction: 'Accepted',
+    projectLead: true,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2602.09809', label: 'arXiv' },
+      { kind: 'code', href: 'https://github.com/Tong-0302/SciFlow-Bench', label: 'Code' },
+    ] satisfies PublicationLink[],
+  },
+  {
+    title: 'Source-Grounded Semantic Reinforcement Learning for Low-Resource Target-Language Generation',
+    role: 'Co-first author',
+    venue: 'EMNLP 2026 Main Conference',
+    ccf: 'CCF-B',
+    distinction: 'Accepted',
+    projectLead: false,
+    links: [
+      { kind: 'paper', href: 'https://arxiv.org/abs/2605.29502', label: 'arXiv' },
+    ] satisfies PublicationLink[],
+  },
+  {
+    title: 'Slide P2V-Bench: A Cross-Domain Benchmark for Slide-Centric Scientific Paper-to-Presentation Video Generation',
+    role: 'Co-author',
+    venue: 'NeurIPS 2026 E&D Track',
+    ccf: 'CCF-A',
+    distinction: 'Poster · Accepted',
+    projectLead: false,
+    links: [] satisfies PublicationLink[],
+  },
+  {
     title: 'InsightBenchMaker: Towards Generating Evolving and High-Fidelity Benchmarks for Data-Analysis Agents',
     role: 'First author',
     venue: 'ACL 2026 Findings',
@@ -121,15 +131,14 @@ export const selectedPapers = [
     links: [] satisfies PublicationLink[],
   },
   {
-    title: 'SciFlow-Bench: Evaluating Structure-Aware Scientific Diagram Generation via Inverse Parsing',
+    title: 'DataCross: A Unified Benchmark and Agent Framework for Cross-Modal Heterogeneous Data Analysis',
     role: 'Co-first author',
-    venue: 'ACL 2026 Main Conference',
-    ccf: 'CCF-A',
+    venue: 'EMNLP 2026 Findings',
+    ccf: 'CCF-B',
     distinction: 'Accepted',
-    projectLead: true,
+    projectLead: false,
     links: [
-      { kind: 'paper', href: 'https://arxiv.org/abs/2602.09809', label: 'arXiv' },
-      { kind: 'code', href: 'https://github.com/Tong-0302/SciFlow-Bench', label: 'Code' },
+      { kind: 'paper', href: 'https://arxiv.org/abs/2601.21403', label: 'arXiv' },
     ] satisfies PublicationLink[],
   },
   {

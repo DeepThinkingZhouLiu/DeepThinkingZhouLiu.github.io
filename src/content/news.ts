@@ -11,6 +11,15 @@ export type NewsUpdate = {
 export const newsUpdates: NewsUpdate[] = [
   {
     date: 'Sep. 2026',
+    title: 'P2V-Bench accepted to NeurIPS 2026',
+    detail:
+      'Slide P2V-Bench, a cross-domain benchmark for slide-centric scientific paper-to-presentation video generation, was accepted as a poster in the NeurIPS 2026 Evaluations and Datasets Track.',
+    count: '1 paper',
+    kind: 'Publication',
+    href: '#papers',
+  },
+  {
+    date: 'Sep. 2026',
     title: 'DataFlow accepted to SIGMOD 2027',
     detail:
       'DataFlow, an LLM-driven framework for unified data preparation and workflow automation, was accepted to SIGMOD 2027.',

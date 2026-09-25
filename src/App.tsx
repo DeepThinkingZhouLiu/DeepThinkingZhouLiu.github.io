@@ -123,7 +123,7 @@ function App() {
             kicker="Research"
             title="Selected publications"
             id="papers-title"
-            body="First-author and co-first-author work is listed here. The complete publication record is available through the indexes above."
+            body="Selected first-author, co-first-author, and benchmark collaboration work is listed here. The complete publication record is available through the indexes above."
           />
 
           <div className="publication-content">
