@@ -114,7 +114,7 @@ export const selectedPapers = [
   },
   {
     title: 'Slide P2V-Bench: A Cross-Domain Benchmark for Slide-Centric Scientific Paper-to-Presentation Video Generation',
-    role: 'Co-author',
+    role: 'Co-First-author',
     venue: 'NeurIPS 2026 E&D Track',
     ccf: 'CCF-A',
     distinction: 'Poster · Accepted',
